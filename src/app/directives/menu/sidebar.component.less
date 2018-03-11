@@ -1,0 +1,207 @@
+@import '../../../variable.less';
+@import '../../../mixin.less';
+
+:host(app-sidebar) {
+  display: inline-block;
+}
+
+#sidemenu {
+    width: @Sidebarainmenu_minWidth;
+    position: fixed;
+    top: 0;
+    left: -@Sidebarainmenu_minWidth;
+    height: 100vh;
+    background: @Sidebar_Main_Background;
+    transition: @Menu_Transition;
+    // overflow-y: scroll;
+    box-shadow: @Theme_Box_Shadow;
+    width: @Sidebarainmenu_minWidth;
+    /* top layer */
+    z-index: 9999;
+    color:@Sidebar_Main_Color;
+
+    &.active {
+      left: 0;
+    }
+
+    .sidebar-header {
+      padding: @Sidebar_Header_Padding;
+      background: @Sidebar_Header_Background;
+      display: block;
+    }
+
+    .list-unstyled{
+      list-style: none;
+    }
+
+    ul {
+      &.components{
+        // padding: @Sidebar_Components_Padding;
+        border-bottom: 1px solid #47748b;
+      }
+
+      p {
+        color: @Sidebar_Main_Color;
+        padding: @Sidebar_PMenu_Padding;
+        font-size: @Sidebar_PMenu_Font_Size;
+        font-weight: @Sidebar_PMenu_Font_Weight;
+        //line-height: @Sidebar_PMenu_Line_Height;
+      }
+
+      ul {
+        a {
+          font-size: @Sidebar_SubMenu_Font_Size !important;
+          padding-left: @Sidebar_SubMenu_Padding !important;
+          background: @Sidebar_SubMenu_Background;
+        }
+      }
+
+      li {
+        a {
+          &[data-toggle="collapse"] {
+            position: relative;
+          }
+
+          &[aria-expanded="false"],
+          &[aria-expanded="true"] {
+            &::before {
+              content: '\e259';
+              display: block;
+              position: absolute;
+              right: @Sidebar_Menu_Expantion_Side_Padding;
+              font-family: 'Glyphicons Halflings';
+              font-size: @Sidebar_Menu_Expantion_Font_Size;
+            }
+          }
+
+          padding: @Sidebar_Menu_Padding;
+          font-size: @Sidebar_Menu_Font_Size;
+          display: block;
+          color: @Sidebar_Main_Color;
+
+          &:hover{
+            color: @Sidebar_Menu_Hover_Color;
+            background: @Sidebar_Menu_Hover_Background
+          }
+        }
+
+        position: relative;
+        //line-height: 20px;
+        display: inline-block;
+        width: 100%;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          height: 100%;
+          width: 3px;
+          background-color: @Sidebar_Main_Background;
+          .transition(@Sidebar_Fancy_Menu_Transition);
+        }
+
+        &:first-child{
+          a {
+            background-color: @Sidebar_Fancy_Color1;
+          }
+        }
+
+        &:nth-child(2) {
+          &::before {
+            background-color: @Sidebar_Fancy_Color2;
+          }
+        }
+
+        &:nth-child(3) {
+          &::before {
+            background-color: @Sidebar_Fancy_Color3;
+          }
+        }
+
+        &:nth-child(4) {
+          &::before {
+            background-color: @Sidebar_Fancy_Color4;
+          }
+        }
+
+        &:nth-child(5) {
+          &::before {
+            background-color: @Sidebar_Fancy_Color5;
+          }
+        }
+
+        &:nth-child(6) {
+          &::before {
+            background-color: @Sidebar_Fancy_Color6;
+          }
+        }
+
+        &:nth-child(7) {
+          &::before {
+            background-color: @Sidebar_Fancy_Color7;
+          }
+        }
+
+        &:nth-child(8) {
+          &::before {
+            background-color: @Sidebar_Fancy_Color8;
+          }
+        }
+
+        &:nth-child(9) {
+          &::before {
+            background-color: @Sidebar_Fancy_Color9;
+          }
+        }
+
+        &:hover,
+        &.open:hover {
+          &::before {
+            width: 100%;
+            .transition(@Sidebar_Fancy_Menu_Transition);
+          }
+        }
+
+        &,
+        &.open {
+          a {
+            &:hover,
+            &:active,
+            &:focus {
+              text-decoration: none;
+              background: transparent !important;
+            }
+          }
+        }
+
+        &.active {
+          &>a {
+            color: @Sidebar_Main_Color;
+            //background: @Sidebar_Menu_Active_Background;
+          }
+
+          &::before {
+            width: 100%;
+            .transition(@Sidebar_Fancy_Menu_Transition);
+          }
+        }
+      }
+    }
+
+    #dismiss {
+      width: @Sidebar_Dismiss_Size;
+      height: @Sidebar_Dismiss_Size;
+      line-height: @Sidebar_Dismiss_Size;
+      text-align: center;
+      background: @Sidebar_Dismiss_Background_Color;
+      position: absolute;
+      top: @Sidebar_Dismiss_Padding;
+      right: @Sidebar_Dismiss_Padding;
+      cursor: pointer;
+      .transition(@Menu_Transition);
+      border-radius: @Sidebar_Dismiss_Size;
+      z-index: 9999;
+    }
+  }

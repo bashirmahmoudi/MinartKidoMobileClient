@@ -1,0 +1,56 @@
+https://bootstrapious.com/p/bootstrap-sidebar
+
+https://github.com/inuyaksa/jquery.nicescroll
+
+https://valor-software.com/ngx-bootstrap/#/alerts
+
+https://github.com/zefoy/ngx-perfect-scrollbar
+
+https://bootsnipp.com/snippets/featured/fancy-sidebar-navigation
+
+https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/PAYLOAD.md
+
+http://macdonst.github.io/push-workshop/module1.html
+
+https://github.com/katzer/cordova-plugin-local-notifications
+
+https://stackoverflow.com/questions/7395686/how-can-i-serialize-a-function-in-javascript
+
+https://stackoverflow.com/questions/36565993/unable-to-build-an-android-gradle-project-for-a-cordova-project
+
+subProjects.forEach(function (p) {
+        console.log('Subproject Path: ' + p);
+        var libName = p.replace(/[/\\]/g, ':').replace(name + '-', '');
+        // depsList += '    debugCompile(project(path: "' + libName + '", configuration: "debug"))';
+        // insertExclude(p);
+        // depsList += '    releaseCompile(project(path: "' + libName + '", configuration: "release"))';
+        depsList += '    implementation project("'+libName +'")';
+        insertExclude(p);
+    });
+gradle build;
+
+https://bootstrapious.com/p/bootstrap-tips-and-tricks
+
+https://bootstrapious.com/p/bootstrap-carousel
+
+https://forum.ionicframework.com/t/how-to-load-image-from-android-local-storage/25132/2
+
+https://bootsnipp.com/snippets/featured/circle-progress-bar
+
+https://bootsnipp.com/snippets/featured/creative-animated-loading-icon-in-html5-css3
+
+https://bootsnipp.com/snippets/xrvRW
+
+https://bootsnipp.com/snippets/dlAQB
+
+https://bootsnipp.com/snippets/featured/google-style-login-extended-with-html5-localstorage
+
+https://bootsnipp.com/snippets/featured/progressive-button-on-login
+
+https://bootsnipp.com/snippets/featured/yahoo-login-style
+
+https://bootsnipp.com/snippets/featured/people-card-with-tabs
+
+https://bootsnipp.com/snippets/featured/user-profile-sidebar
+
+
