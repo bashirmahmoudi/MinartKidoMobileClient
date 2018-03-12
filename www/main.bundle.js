@@ -475,7 +475,7 @@ var MapState;
 /***/ "./src/app/directives/map/map.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div #mapconvas class=\"mapconvas\">\n  <div></div>\n  <div class=\"selectCenter\">\n    <button class=\"btn btn-default selectbtn\" *ngIf=\"State == 'select'\" (click)=\"select()\" #selection></button>\n  </div>\n  <div></div>\n</div>\n"
+module.exports = "<div #mapconvas class=\"mapconvas\">\r\n  <div></div>\r\n  <div class=\"selectCenter\">\r\n    <button class=\"btn btn-default selectbtn\" *ngIf=\"State == 'select'\" (click)=\"select()\" #selection></button>\r\n  </div>\r\n  <div></div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -941,7 +941,7 @@ exports.HomeModule = HomeModule;
 /***/ "./src/app/sections/nfc.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  nfc works!\n</p>\n"
+module.exports = "<p>\r\n  nfc works!\r\n</p>\r\n"
 
 /***/ }),
 
