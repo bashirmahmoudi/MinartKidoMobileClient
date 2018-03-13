@@ -13,6 +13,7 @@
     <preference name="loadUrlTimeoutValue" value="600000" />
     <preference name="KeepRunning" value="true" />
     <hook src="scripts/prepareAngular2App.js" type="befor_prepare" />
+    <hook src="scripts/after_platform_add.js" type="after_platform_add" />
     <platform name="android">
         <icon density="ldpi" src="src/assets/icon/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="src/assets/icon/android/drawable-mdpi-icon.png" />
