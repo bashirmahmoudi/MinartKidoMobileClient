@@ -17,34 +17,6 @@
               "count": 1
             },
             {
-              "xml": "<preference name=\"webView\" value=\"org.crosswalk.engine.XWalkWebViewEngine\" />",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"xwalkVersion\" value=\"23+\" />",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"xwalkLiteVersion\" value=\"xwalk_core_library_canary:17+\" />",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"xwalkCommandLine\" value=\"--disable-pull-to-refresh-effect\" />",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"xwalkMode\" value=\"embedded\" />",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"xwalkMultipleApk\" value=\"true\" />",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"android-minSdkVersion\" value=\"16\" />",
-              "count": 1
-            },
-            {
               "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
               "count": 1
             },
@@ -131,18 +103,26 @@
           ]
         }
       },
-      "AndroidManifest.xml": {
+      "config.xml": {
         "parents": {
           "/*": [
             {
-              "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
-              "count": 2
+              "xml": "<preference name=\"xwalkZOrderOnTop\" value=\"true\" />",
+              "count": 1
             },
             {
-              "xml": "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\" />",
-              "count": 2
+              "xml": "<preference name=\"BackgroundColor\" value=\"0\" />",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"android-minSdkVersion\" value=\"19\" />",
+              "count": 1
             }
-          ],
+          ]
+        }
+      },
+      "AndroidManifest.xml": {
+        "parents": {
           "/manifest/application": [
             {
               "xml": "<meta-data android:name=\"com.google.android.geo.API_KEY\" android:value=\"123456\" />",
@@ -210,22 +190,14 @@
               "xml": "<uses-feature android:name=\"android.hardware.nfc\" android:required=\"false\" />",
               "count": 1
             }
-          ]
-        }
-      },
-      "config.xml": {
-        "parents": {
+          ],
           "/*": [
             {
-              "xml": "<preference name=\"xwalkZOrderOnTop\" value=\"true\" />",
+              "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
               "count": 1
             },
             {
-              "xml": "<preference name=\"BackgroundColor\" value=\"0\" />",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"android-minSdkVersion\" value=\"19\" />",
+              "xml": "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\" />",
               "count": 1
             }
           ]
@@ -234,6 +206,9 @@
     }
   },
   "installed_plugins": {
+    "com.googlemaps.ios": {
+      "PACKAGE_NAME": "com.minart.kido"
+    },
     "cordova-custom-config": {
       "PACKAGE_NAME": "com.minart.kido"
     },
@@ -241,14 +216,6 @@
       "PACKAGE_NAME": "com.minart.kido"
     },
     "cordova-plugin-buildinfo": {
-      "PACKAGE_NAME": "com.minart.kido"
-    },
-    "cordova-plugin-crosswalk-webview": {
-      "XWALK_VERSION": "23+",
-      "XWALK_LITEVERSION": "xwalk_core_library_canary:17+",
-      "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
-      "XWALK_MODE": "embedded",
-      "XWALK_MULTIPLEAPK": "true",
       "PACKAGE_NAME": "com.minart.kido"
     },
     "cordova-plugin-device": {
@@ -581,10 +548,10 @@
     }
   ],
   "plugin_metadata": {
+    "com.googlemaps.ios": "2.6.0",
     "cordova-custom-config": "5.0.2",
     "cordova-plugin-badge": "0.8.7",
     "cordova-plugin-buildinfo": "2.0.1",
-    "cordova-plugin-crosswalk-webview": "2.4.0",
     "cordova-plugin-device": "2.0.1",
     "cordova-plugin-dialogs": "2.0.1",
     "cordova-plugin-googlemaps": "2.2.5",

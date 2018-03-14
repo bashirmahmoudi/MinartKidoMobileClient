@@ -14,8 +14,8 @@
     "QuartzCore.framework": 1,
     "SystemConfiguration.framework": 2,
     "UIKit.framework": 1,
-    "UserNotifications.framework": 1,
     "Security.framework": 1,
     "CoreNFC.framework": 1,
-    "PushKit.framework": 1
+    "PushKit.framework": 1,
+    "UserNotifications.framework": 1
 }

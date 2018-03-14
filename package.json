@@ -21,23 +21,15 @@
   "private": true,
   "cordova": {
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ],
     "plugins": {
       "cordova-custom-config": {},
       "cordova-plugin-badge": {},
       "cordova-plugin-buildinfo": {},
-      "cordova-plugin-crosswalk-webview": {
-        "XWALK_VERSION": "23+",
-        "XWALK_LITEVERSION": "xwalk_core_library_canary:17+",
-        "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
-        "XWALK_MODE": "embedded",
-        "XWALK_MULTIPLEAPK": "true"
-      },
       "cordova-plugin-device": {},
       "cordova-plugin-dialogs": {},
-      "cordova-plugin-local-notification": {},
       "cordova-plugin-network-information": {},
       "cordova-plugin-networkinterface": {},
       "cordova-plugin-statusbar": {},
@@ -53,7 +45,8 @@
         "ANDROID_SUPPORT_V4_VERSION": "24.1.0",
         "LOCATION_WHEN_IN_USE_DESCRIPTION": "Location is in Use",
         "LOCATION_ALWAYS_USAGE_DESCRIPTION": "Location always descript"
-      }
+      },
+      "cordova-plugin-local-notification": {}
     }
   },
   "dependencies": {
@@ -81,7 +74,6 @@
     "cordova-ios": "^4.5.4",
     "cordova-plugin-badge": "^0.8.7",
     "cordova-plugin-buildinfo": "^2.0.1",
-    "cordova-plugin-crosswalk-webview": "^2.4.0",
     "cordova-plugin-device": "^2.0.1",
     "cordova-plugin-dialogs": "^2.0.1",
     "cordova-plugin-geolocation": "~2.4.3",

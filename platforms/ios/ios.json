@@ -77,10 +77,6 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"LocalNotification\"><param name=\"ios-package\" value=\"APPLocalNotification\" /></feature>",
-              "count": 1
-            },
-            {
               "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
               "count": 1
             },
@@ -110,6 +106,10 @@
             },
             {
               "xml": "<feature name=\"PushNotification\"><param name=\"ios-package\" value=\"PushPlugin\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"LocalNotification\"><param name=\"ios-package\" value=\"APPLocalNotification\" /></feature>",
               "count": 1
             }
           ]
@@ -217,9 +217,6 @@
     "cordova-plugin-buildinfo": {
       "PACKAGE_NAME": "com.minart.kido"
     },
-    "cordova-plugin-crosswalk-webview": {
-      "PACKAGE_NAME": "com.minart.kido"
-    },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "com.minart.kido"
     },
@@ -233,9 +230,6 @@
       "API_KEY_FOR_IOS": "123456",
       "LOCATION_WHEN_IN_USE_DESCRIPTION": "Location is in Use",
       "LOCATION_ALWAYS_USAGE_DESCRIPTION": "Location always descript",
-      "PACKAGE_NAME": "com.minart.kido"
-    },
-    "cordova-plugin-local-notification": {
       "PACKAGE_NAME": "com.minart.kido"
     },
     "cordova-plugin-network-information": {
@@ -255,6 +249,9 @@
       "PACKAGE_NAME": "com.minart.kido"
     },
     "phonegap-plugin-push": {
+      "PACKAGE_NAME": "com.minart.kido"
+    },
+    "cordova-plugin-local-notification": {
       "PACKAGE_NAME": "com.minart.kido"
     }
   },
@@ -475,32 +472,6 @@
       ]
     },
     {
-      "id": "cordova-plugin-local-notification.LocalNotification",
-      "file": "plugins/cordova-plugin-local-notification/www/local-notification.js",
-      "pluginId": "cordova-plugin-local-notification",
-      "clobbers": [
-        "cordova.plugins.notification.local"
-      ]
-    },
-    {
-      "id": "cordova-plugin-local-notification.LocalNotification.Core",
-      "file": "plugins/cordova-plugin-local-notification/www/local-notification-core.js",
-      "pluginId": "cordova-plugin-local-notification",
-      "clobbers": [
-        "cordova.plugins.notification.local.core",
-        "plugin.notification.local.core"
-      ]
-    },
-    {
-      "id": "cordova-plugin-local-notification.LocalNotification.Util",
-      "file": "plugins/cordova-plugin-local-notification/www/local-notification-util.js",
-      "pluginId": "cordova-plugin-local-notification",
-      "merges": [
-        "cordova.plugins.notification.local.core",
-        "plugin.notification.local.core"
-      ]
-    },
-    {
       "id": "cordova-plugin-network-information.network",
       "file": "plugins/cordova-plugin-network-information/www/network.js",
       "pluginId": "cordova-plugin-network-information",
@@ -554,23 +525,48 @@
       "clobbers": [
         "PushNotification"
       ]
+    },
+    {
+      "id": "cordova-plugin-local-notification.LocalNotification",
+      "file": "plugins/cordova-plugin-local-notification/www/local-notification.js",
+      "pluginId": "cordova-plugin-local-notification",
+      "clobbers": [
+        "cordova.plugins.notification.local"
+      ]
+    },
+    {
+      "id": "cordova-plugin-local-notification.LocalNotification.Core",
+      "file": "plugins/cordova-plugin-local-notification/www/local-notification-core.js",
+      "pluginId": "cordova-plugin-local-notification",
+      "clobbers": [
+        "cordova.plugins.notification.local.core",
+        "plugin.notification.local.core"
+      ]
+    },
+    {
+      "id": "cordova-plugin-local-notification.LocalNotification.Util",
+      "file": "plugins/cordova-plugin-local-notification/www/local-notification-util.js",
+      "pluginId": "cordova-plugin-local-notification",
+      "merges": [
+        "cordova.plugins.notification.local.core",
+        "plugin.notification.local.core"
+      ]
     }
   ],
   "plugin_metadata": {
     "cordova-custom-config": "5.0.2",
     "cordova-plugin-badge": "0.8.7",
     "cordova-plugin-buildinfo": "2.0.1",
-    "cordova-plugin-crosswalk-webview": "2.4.0",
     "cordova-plugin-device": "2.0.1",
     "cordova-plugin-dialogs": "2.0.1",
     "com.googlemaps.ios": "2.6.0",
     "cordova-plugin-googlemaps": "2.2.5",
-    "cordova-plugin-local-notification": "0.9.0-beta.2",
     "cordova-plugin-network-information": "2.0.1",
     "cordova-plugin-networkinterface": "1.2.0",
     "cordova-plugin-statusbar": "2.4.1",
     "cordova-sqlcipher-adapter": "0.1.12-rc2",
     "phonegap-nfc": "0.7.1",
-    "phonegap-plugin-push": "2.2.2"
+    "phonegap-plugin-push": "2.2.2",
+    "cordova-plugin-local-notification": "0.9.0-beta.2"
   }
 }

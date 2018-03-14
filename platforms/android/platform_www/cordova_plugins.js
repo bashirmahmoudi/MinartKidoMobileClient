@@ -299,10 +299,10 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
+  "com.googlemaps.ios": "2.6.0",
   "cordova-custom-config": "5.0.2",
   "cordova-plugin-badge": "0.8.7",
   "cordova-plugin-buildinfo": "2.0.1",
-  "cordova-plugin-crosswalk-webview": "2.4.0",
   "cordova-plugin-device": "2.0.1",
   "cordova-plugin-dialogs": "2.0.1",
   "cordova-plugin-googlemaps": "2.2.5",

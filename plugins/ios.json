@@ -16,9 +16,6 @@
     "cordova-plugin-buildinfo": {
       "PACKAGE_NAME": "com.minart.kido"
     },
-    "cordova-plugin-crosswalk-webview": {
-      "PACKAGE_NAME": "com.minart.kido"
-    },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "com.minart.kido"
     },
@@ -29,9 +26,6 @@
       "API_KEY_FOR_IOS": "123456",
       "LOCATION_WHEN_IN_USE_DESCRIPTION": "Location is in Use",
       "LOCATION_ALWAYS_USAGE_DESCRIPTION": "Location always descript",
-      "PACKAGE_NAME": "com.minart.kido"
-    },
-    "cordova-plugin-local-notification": {
       "PACKAGE_NAME": "com.minart.kido"
     },
     "cordova-plugin-network-information": {
@@ -51,6 +45,9 @@
       "PACKAGE_NAME": "com.minart.kido"
     },
     "phonegap-plugin-push": {
+      "PACKAGE_NAME": "com.minart.kido"
+    },
+    "cordova-plugin-local-notification": {
       "PACKAGE_NAME": "com.minart.kido"
     }
   },

@@ -72,9 +72,6 @@
     <feature name="MarkerCluster">
         <param name="ios-package" value="PluginMarkerCluster" />
     </feature>
-    <feature name="LocalNotification">
-        <param name="ios-package" value="APPLocalNotification" />
-    </feature>
     <feature name="NetworkStatus">
         <param name="ios-package" value="CDVConnection" />
     </feature>
@@ -137,4 +134,7 @@
     <preference name="android-minSdkVersion" value="16" />
     <preference name="loadUrlTimeoutValue" value="600000" />
     <preference name="KeepRunning" value="true" />
+    <feature name="LocalNotification">
+        <param name="ios-package" value="APPLocalNotification" />
+    </feature>
 </widget>

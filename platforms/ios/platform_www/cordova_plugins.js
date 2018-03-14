@@ -215,32 +215,6 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-plugin-local-notification.LocalNotification",
-    "file": "plugins/cordova-plugin-local-notification/www/local-notification.js",
-    "pluginId": "cordova-plugin-local-notification",
-    "clobbers": [
-      "cordova.plugins.notification.local"
-    ]
-  },
-  {
-    "id": "cordova-plugin-local-notification.LocalNotification.Core",
-    "file": "plugins/cordova-plugin-local-notification/www/local-notification-core.js",
-    "pluginId": "cordova-plugin-local-notification",
-    "clobbers": [
-      "cordova.plugins.notification.local.core",
-      "plugin.notification.local.core"
-    ]
-  },
-  {
-    "id": "cordova-plugin-local-notification.LocalNotification.Util",
-    "file": "plugins/cordova-plugin-local-notification/www/local-notification-util.js",
-    "pluginId": "cordova-plugin-local-notification",
-    "merges": [
-      "cordova.plugins.notification.local.core",
-      "plugin.notification.local.core"
-    ]
-  },
-  {
     "id": "cordova-plugin-network-information.network",
     "file": "plugins/cordova-plugin-network-information/www/network.js",
     "pluginId": "cordova-plugin-network-information",
@@ -294,6 +268,32 @@ module.exports = [
     "clobbers": [
       "PushNotification"
     ]
+  },
+  {
+    "id": "cordova-plugin-local-notification.LocalNotification",
+    "file": "plugins/cordova-plugin-local-notification/www/local-notification.js",
+    "pluginId": "cordova-plugin-local-notification",
+    "clobbers": [
+      "cordova.plugins.notification.local"
+    ]
+  },
+  {
+    "id": "cordova-plugin-local-notification.LocalNotification.Core",
+    "file": "plugins/cordova-plugin-local-notification/www/local-notification-core.js",
+    "pluginId": "cordova-plugin-local-notification",
+    "clobbers": [
+      "cordova.plugins.notification.local.core",
+      "plugin.notification.local.core"
+    ]
+  },
+  {
+    "id": "cordova-plugin-local-notification.LocalNotification.Util",
+    "file": "plugins/cordova-plugin-local-notification/www/local-notification-util.js",
+    "pluginId": "cordova-plugin-local-notification",
+    "merges": [
+      "cordova.plugins.notification.local.core",
+      "plugin.notification.local.core"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -302,18 +302,17 @@ module.exports.metadata =
   "cordova-custom-config": "5.0.2",
   "cordova-plugin-badge": "0.8.7",
   "cordova-plugin-buildinfo": "2.0.1",
-  "cordova-plugin-crosswalk-webview": "2.4.0",
   "cordova-plugin-device": "2.0.1",
   "cordova-plugin-dialogs": "2.0.1",
   "com.googlemaps.ios": "2.6.0",
   "cordova-plugin-googlemaps": "2.2.5",
-  "cordova-plugin-local-notification": "0.9.0-beta.2",
   "cordova-plugin-network-information": "2.0.1",
   "cordova-plugin-networkinterface": "1.2.0",
   "cordova-plugin-statusbar": "2.4.1",
   "cordova-sqlcipher-adapter": "0.1.12-rc2",
   "phonegap-nfc": "0.7.1",
-  "phonegap-plugin-push": "2.2.2"
+  "phonegap-plugin-push": "2.2.2",
+  "cordova-plugin-local-notification": "0.9.0-beta.2"
 };
 // BOTTOM OF METADATA
 });
