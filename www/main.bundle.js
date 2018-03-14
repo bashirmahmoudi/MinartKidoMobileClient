@@ -545,6 +545,8 @@ var MapComponent = /** @class */ (function () {
         configurable: true
     });
     MapComponent.prototype.ngOnInit = function () {
+    };
+    MapComponent.prototype.ngAfterViewChecked = function () {
         var self = this;
         plugin.google.maps.LocationService.getMyLocation(this._locationOption, function (location) {
             self._map = plugin.google.maps.Map.getMap(self._convas.nativeElement, {

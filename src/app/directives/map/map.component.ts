@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, ElementRef, ViewChild, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ElementRef, ViewChild, Input, Output, EventEmitter, AfterViewChecked } from '@angular/core';
 import * as $ from 'jquery';
 import { MarkerObject } from './marker';
 import { MapState } from './map-state.enum';
@@ -13,7 +13,7 @@ declare var plugin: any;
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.less']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, AfterViewChecked {
 
   private _markers: Array<MarkerObject>;
   private _state: MapState;
@@ -72,6 +72,10 @@ export class MapComponent implements OnInit {
   }
 
   public ngOnInit() {
+
+  }
+
+  public ngAfterViewChecked() {
     let self = this;
     plugin.google.maps.LocationService.getMyLocation(this._locationOption, function(location){
       self._map = plugin.google.maps.Map.getMap(self._convas.nativeElement, {
