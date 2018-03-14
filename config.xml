@@ -93,14 +93,14 @@
     </plugin>
     <plugin name="phonegap-plugin-push" spec="^2.2.2" />
     <plugin name="cordova-plugin-googlemaps" spec="^2.2.5">
-        <variable name="API_KEY_FOR_ANDROID" value="123456" />
-        <variable name="API_KEY_FOR_IOS" value="123456" />
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyDiylbqnHhwPJtFPhNoWRJlldWUI3BPZSc" />
+        <variable name="API_KEY_FOR_IOS" value="AIzaSyDiylbqnHhwPJtFPhNoWRJlldWUI3BPZSc" />
         <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
         <variable name="ANDROID_SUPPORT_V4_VERSION" value="24.1.0" />
         <variable name="LOCATION_WHEN_IN_USE_DESCRIPTION" value="Location is in Use" />
         <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="Location always descript" />
     </plugin>
-    <engine name="ios" spec="^4.5.4" />
     <plugin name="cordova-plugin-local-notification" spec="^0.9.0-beta.2" />
-    <engine name="android" spec="~7.0.0" />
+    <engine name="ios" spec="^4.5.4" />
+    <engine name="android" spec="^7.0.0" />
 </widget>
