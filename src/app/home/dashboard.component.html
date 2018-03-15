@@ -1,10 +1,10 @@
 <div class="container-fluid">
 
   <ul class="nav nav-tabs" role="tablist">
-    <!-- <li role="presentation" class="active">
-      <a href="#map" aria-controls="map" role="tab" data-toggle="tab">Map</a>
-    </li> -->
     <li role="presentation" class="active">
+      <a href="#map" aria-controls="map" role="tab" data-toggle="tab">Map</a>
+    </li>
+    <li role="presentation">
       <a href="#nfctag" aria-controls="nfctag" role="tab" data-toggle="tab">Nfc</a>
     </li>
     <li role="presentation">
@@ -13,19 +13,18 @@
   </ul>
 
   <div class="tab-content">
-    <!-- <div role="tabpanel" class="tab-pane fade in active" id="map">
-      <div class="container" id="mapcnt">
-        <app-map #mainMap [state]="mapState" [useMyLocation]="mapUseMyLocation" (selectionChanged)="mapSelected($event)"></app-map>
-      </div>
+    <div role="tabpanel" class="tab-pane fade in active" id="map">
+        <div class="container" id="mapcnt">
+          <app-map #mainMap [state]="mapState" [useMyLocation]="mapUseMyLocation" (selectionChanged)="mapSelected($event)"></app-map>
+        </div>
+    </div>
 
-    </div> -->
-
-    <div role="tabpanel" class="tab-pane fade in active" id="nfctag">
+    <div role="tabpanel" class="tab-pane fade" id="nfctag">
       <div class="container">
         <form class="form-inline">
           <div class="form-group">
             <label for="testNfcMessage">Message: </label>
-            <input type="text" class="form-control" id="testNfcMessage" placeholder="Test message ..." [value]="nfcMessage" >
+            <input type="text" class="form-control" id="testNfcMessage" placeholder="Test message ..." [value]="nfcMessage">
           </div>
           <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn" (click)="startNfc()">
             <i class="glyphicon glyphicon-export"></i>

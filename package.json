@@ -22,7 +22,8 @@
   "cordova": {
     "platforms": [
       "ios",
-      "android"
+      "android",
+      "browser"
     ],
     "plugins": {
       "cordova-custom-config": {},
@@ -67,8 +68,9 @@
     "@types/jquery": "^3.2.16",
     "@types/phonegap-nfc": "0.0.30",
     "@types/reflect-metadata": "0.0.5",
-    "bootstrap": "^4.0.0-alpha.6",
+    "bootstrap": "^3.3.7",
     "cordova-android": "^7.0.0",
+    "cordova-browser": "^5.0.3",
     "cordova-common": "^2.1.1",
     "cordova-custom-config": "^5.0.2",
     "cordova-ios": "^4.5.4",

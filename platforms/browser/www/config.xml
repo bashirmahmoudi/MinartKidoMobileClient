@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.minart.kido" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>kido</name>
+    <description>
+        Kids entertainment application
+    </description>
+    <author email="bashir.mahmoudi@gmail.com" href="http://www.minartco.com">
+        Free Lancer Programmer
+    </author>
+    <content src="index.html" />
+    <hook src="scripts/prepareAngular2App.js" type="befor_prepare" />
+    <hook src="scripts/after_platform_add.js" type="after_platform_add" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="android-minSdkVersion" value="16" />
+    <preference name="loadUrlTimeoutValue" value="600000" />
+    <preference name="KeepRunning" value="true" />
+</widget>
