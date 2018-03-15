@@ -513,6 +513,9 @@ var MapComponent = /** @class */ (function () {
                 title: 'Select your location'
             };
         }
+        this._locationOption = {
+            enableHighAccuracy: true
+        };
     }
     Object.defineProperty(MapComponent.prototype, "Markers", {
         set: function (value) {
@@ -545,18 +548,23 @@ var MapComponent = /** @class */ (function () {
         configurable: true
     });
     MapComponent.prototype.ngOnInit = function () {
-    };
-    MapComponent.prototype.ngAfterViewChecked = function () {
         var self = this;
         plugin.google.maps.LocationService.getMyLocation(this._locationOption, function (location) {
+            console.log(self._locationOption);
+            console.log(self._convas.nativeElement);
             self._map = plugin.google.maps.Map.getMap(self._convas.nativeElement, {
                 'camera': {
                     target: location.latLng,
                     zoom: 16
                 }
             });
-            self._map.setMyLocationEnabled(true);
-            self._map.addEventListener(plugin.google.maps.event.MAP_READY, function () {
+            console.log(self._map);
+            console.log(location.latLng);
+            console.log(plugin.google.maps.event.MAP_READY);
+            self._map.on(plugin.google.maps.event.MAP_READY, function () {
+                console.log("mapready");
+                console.log(self._map);
+                self._map.setMyLocationEnabled(true);
                 if (self._state === map_state_enum_1.MapState.select) {
                     self.MakeSelection(location.latLng);
                 }
@@ -564,7 +572,7 @@ var MapComponent = /** @class */ (function () {
                     self.MakeShow();
                 }
             });
-            self._map.addEventListener(plugin.google.maps.event.MAP_LONG_CLICK, function (latLng) {
+            self._map.on(plugin.google.maps.event.MAP_LONG_CLICK, function (latLng) {
                 if (self._selectMarker && self._state === map_state_enum_1.MapState.select) {
                     self._selectMarker["marker"].setPosition({
                         lat: latLng.lat,
@@ -572,7 +580,7 @@ var MapComponent = /** @class */ (function () {
                     });
                 }
             });
-            self._map.addEventListener(plugin.google.maps.event.CAMERA_MOVE, function (cameraPosition) {
+            self._map.on(plugin.google.maps.event.CAMERA_MOVE, function (cameraPosition) {
                 if (self._selectMarker && self._state === map_state_enum_1.MapState.select) {
                     self._selectMarker["marker"].setPosition({
                         lat: cameraPosition.target.lat,
@@ -580,7 +588,7 @@ var MapComponent = /** @class */ (function () {
                     });
                 }
             });
-            self._map.addEventListener(plugin.google.maps.event.CAMERA_MOVE_END, function (cameraPosition) {
+            self._map.on(plugin.google.maps.event.CAMERA_MOVE_END, function (cameraPosition) {
                 if (self._selectMarker && self._state === map_state_enum_1.MapState.select) {
                     self._selectMarker["marker"].setPosition({
                         lat: cameraPosition.target.lat,
@@ -589,6 +597,8 @@ var MapComponent = /** @class */ (function () {
                 }
             });
         });
+    };
+    MapComponent.prototype.ngAfterViewChecked = function () {
     };
     MapComponent.prototype.AddMarkers = function (markers) {
     };
@@ -778,7 +788,7 @@ exports.SidebarComponent = SidebarComponent;
 /***/ "./src/app/home/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\r\n\r\n  <ul class=\"nav nav-tabs\" role=\"tablist\">\r\n    <li role=\"presentation\" class=\"active\">\r\n      <a href=\"#map\" aria-controls=\"map\" role=\"tab\" data-toggle=\"tab\">Map</a>\r\n    </li>\r\n    <li role=\"presentation\">\r\n      <a href=\"#nfctag\" aria-controls=\"nfctag\" role=\"tab\" data-toggle=\"tab\">Nfc</a>\r\n    </li>\r\n    <li role=\"presentation\">\r\n      <a href=\"#pushNotification\" aria-controls=\"pushNotification\" role=\"tab\" data-toggle=\"tab\">Notification</a>\r\n    </li>\r\n  </ul>\r\n\r\n  <div class=\"tab-content\">\r\n    <div role=\"tabpanel\" class=\"tab-pane fade in active\" id=\"map\">\r\n      <div class=\"container\" id=\"mapcnt\">\r\n        <app-map #mainMap [state]=\"mapState\" [useMyLocation]=\"mapUseMyLocation\" (selectionChanged)=\"mapSelected($event)\"></app-map>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div role=\"tabpanel\" class=\"tab-pane fade\" id=\"nfctag\">\r\n      <div class=\"container\">\r\n        <form class=\"form-inline\">\r\n          <div class=\"form-group\">\r\n            <label for=\"testNfcMessage\">Message: </label>\r\n            <input type=\"text\" class=\"form-control\" id=\"testNfcMessage\" placeholder=\"Test message ...\" [value]=\"nfcMessage\" >\r\n          </div>\r\n          <button type=\"button\" id=\"sidebarCollapse\" class=\"btn btn-info navbar-btn\" (click)=\"startNfc()\">\r\n            <i class=\"glyphicon glyphicon-export\"></i>\r\n            StartNfc\r\n          </button>\r\n        </form>\r\n      </div>\r\n\r\n    </div>\r\n    <div role=\"tabpanel\" class=\"tab-pane fade\" id=\"pushNotification\">\r\n      <div class=\"container-fluid\">\r\n        <div class=\"row\">\r\n          <h1> Registration Id:</h1>\r\n          <p> {{RegistrationId}} </p>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid\">\r\n\r\n  <ul class=\"nav nav-tabs\" role=\"tablist\">\r\n    <!-- <li role=\"presentation\" class=\"active\">\r\n      <a href=\"#map\" aria-controls=\"map\" role=\"tab\" data-toggle=\"tab\">Map</a>\r\n    </li> -->\r\n    <li role=\"presentation\" class=\"active\">\r\n      <a href=\"#nfctag\" aria-controls=\"nfctag\" role=\"tab\" data-toggle=\"tab\">Nfc</a>\r\n    </li>\r\n    <li role=\"presentation\">\r\n      <a href=\"#pushNotification\" aria-controls=\"pushNotification\" role=\"tab\" data-toggle=\"tab\">Notification</a>\r\n    </li>\r\n  </ul>\r\n\r\n  <div class=\"tab-content\">\r\n    <!-- <div role=\"tabpanel\" class=\"tab-pane fade in active\" id=\"map\">\r\n      <div class=\"container\" id=\"mapcnt\">\r\n        <app-map #mainMap [state]=\"mapState\" [useMyLocation]=\"mapUseMyLocation\" (selectionChanged)=\"mapSelected($event)\"></app-map>\r\n      </div>\r\n\r\n    </div> -->\r\n\r\n    <div role=\"tabpanel\" class=\"tab-pane fade in active\" id=\"nfctag\">\r\n      <div class=\"container\">\r\n        <form class=\"form-inline\">\r\n          <div class=\"form-group\">\r\n            <label for=\"testNfcMessage\">Message: </label>\r\n            <input type=\"text\" class=\"form-control\" id=\"testNfcMessage\" placeholder=\"Test message ...\" [value]=\"nfcMessage\" >\r\n          </div>\r\n          <button type=\"button\" id=\"sidebarCollapse\" class=\"btn btn-info navbar-btn\" (click)=\"startNfc()\">\r\n            <i class=\"glyphicon glyphicon-export\"></i>\r\n            StartNfc\r\n          </button>\r\n        </form>\r\n      </div>\r\n\r\n    </div>\r\n    <div role=\"tabpanel\" class=\"tab-pane fade\" id=\"pushNotification\">\r\n      <div class=\"container-fluid\">\r\n        <div class=\"row\">\r\n          <h1> Registration Id:</h1>\r\n          <p> {{RegistrationId}} </p>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 

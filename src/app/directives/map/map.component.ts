@@ -69,15 +69,18 @@ export class MapComponent implements OnInit, AfterViewChecked {
         title: 'Select your location'
       };
     }
+
+    this._locationOption = {
+      enableHighAccuracy: true
+    };
   }
 
   public ngOnInit() {
-
-  }
-
-  public ngAfterViewChecked() {
     let self = this;
-    plugin.google.maps.LocationService.getMyLocation(this._locationOption, function(location){
+    plugin.google.maps.LocationService.getMyLocation(this._locationOption, function (location) {
+      console.log(self._locationOption);
+
+      console.log(self._convas.nativeElement);
       self._map = plugin.google.maps.Map.getMap(self._convas.nativeElement, {
         'camera': {
           target: location.latLng,
@@ -85,9 +88,16 @@ export class MapComponent implements OnInit, AfterViewChecked {
         }
       });
 
-      self._map.setMyLocationEnabled(true);
 
-      self._map.addEventListener(plugin.google.maps.event.MAP_READY, function() {
+      console.log(self._map);
+      console.log(location.latLng);
+
+      console.log(plugin.google.maps.event.MAP_READY);
+
+      self._map.on(plugin.google.maps.event.MAP_READY, function () {
+        console.log("mapready");
+        console.log(self._map);
+        self._map.setMyLocationEnabled(true);
         if (self._state === MapState.select) {
           self.MakeSelection(location.latLng);
         }
@@ -97,7 +107,7 @@ export class MapComponent implements OnInit, AfterViewChecked {
         }
       });
 
-      self._map.addEventListener(plugin.google.maps.event.MAP_LONG_CLICK, function(latLng) {
+      self._map.on(plugin.google.maps.event.MAP_LONG_CLICK, function (latLng) {
         if (self._selectMarker && self._state === MapState.select) {
           self._selectMarker["marker"].setPosition({
             lat: latLng.lat,
@@ -106,7 +116,7 @@ export class MapComponent implements OnInit, AfterViewChecked {
         }
       });
 
-      self._map.addEventListener(plugin.google.maps.event.CAMERA_MOVE, function(cameraPosition) {
+      self._map.on(plugin.google.maps.event.CAMERA_MOVE, function (cameraPosition) {
         if (self._selectMarker && self._state === MapState.select) {
           self._selectMarker["marker"].setPosition({
             lat: cameraPosition.target.lat,
@@ -115,7 +125,7 @@ export class MapComponent implements OnInit, AfterViewChecked {
         }
       });
 
-      self._map.addEventListener(plugin.google.maps.event.CAMERA_MOVE_END, function (cameraPosition) {
+      self._map.on(plugin.google.maps.event.CAMERA_MOVE_END, function (cameraPosition) {
         if (self._selectMarker && self._state === MapState.select) {
           self._selectMarker["marker"].setPosition({
             lat: cameraPosition.target.lat,
@@ -124,6 +134,11 @@ export class MapComponent implements OnInit, AfterViewChecked {
         }
       });
     });
+
+  }
+
+  public ngAfterViewChecked() {
+
   }
 
   public AddMarkers(markers: Array<any>) {
