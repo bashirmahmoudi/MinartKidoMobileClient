@@ -41,11 +41,11 @@ export class MapComponent implements OnInit, AfterViewChecked {
   public set state(value: MapState) {
     this._state = value;
     if (this._map && value === MapState.select) {
-      this.MakeSelection();
+      // this.MakeSelection();
     }
 
     if (this._map && value === MapState.show) {
-      this.MakeShow();
+      //  this.MakeShow();
     }
   }
 
@@ -62,6 +62,12 @@ export class MapComponent implements OnInit, AfterViewChecked {
 
   @Output()
   public selectionChanged = new EventEmitter<MarkerObject>();
+
+
+  public get stateString(): string {
+    return this._state.toString();
+  }
+
 
   constructor() {
     if ( this._selectMarker ) {
@@ -89,15 +95,15 @@ export class MapComponent implements OnInit, AfterViewChecked {
       });
 
 
-      console.log(self._map);
-      console.log(location.latLng);
 
-      console.log(plugin.google.maps.event.MAP_READY);
 
       self._map.on(plugin.google.maps.event.MAP_READY, function () {
         console.log("mapready");
-        console.log(self._map);
+        console.log(self._state);
         self._map.setMyLocationEnabled(true);
+        self._map.setClickable(true);
+        self._map.setCompassEnabled(true);
+        self._map.setAllGesturesEnabled(true);
         if (self._state === MapState.select) {
           self.MakeSelection(location.latLng);
         }
@@ -146,7 +152,9 @@ export class MapComponent implements OnInit, AfterViewChecked {
   }
 
   public MakeSelection(location?: LatLngObject) {
+    console.log(JSON.stringify(this._selectMarker));
     let options = this.MakeMarkerOption(this._selectMarker, location);
+    console.log(JSON.stringify(options));
     let self = this;
     this._map.addMarker(options, function (marker) {
       self._selectMarker.id = marker.id;
@@ -174,6 +182,12 @@ export class MapComponent implements OnInit, AfterViewChecked {
         option[propery] = element;
       }
     }
+
+    if (location) {
+      option["position"] = location;
+    }
+
+    return option;
   }
 
   public Select() {

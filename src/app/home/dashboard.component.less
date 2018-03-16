@@ -23,11 +23,14 @@
 }
 
 #map{
-    // display: flex;
-    // align-items: stretch;
-    background-color: gray;
-    width: 100%;
-    padding-top: 62%;
+    &::before {
+        content: " ";
+        display: block;
+        width: 100%;
+        padding-top: 62%;
+        z-index: -100;
+    }
+
     position: relative;
 }
 

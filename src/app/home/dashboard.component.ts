@@ -98,4 +98,10 @@ export class DashboardComponent implements OnInit {
   mapSelcted(marker: MarkerObject) {
     this.dialog.alert(`Your Location is \r\n lat:${marker.position.lat} \r\n lng:${marker.position.lng}`);
   }
+
+
+  public get mapState(): MapState {
+    return this._mapState;
+  }
+
 }

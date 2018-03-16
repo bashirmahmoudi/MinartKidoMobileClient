@@ -475,14 +475,14 @@ var MapState;
 /***/ "./src/app/directives/map/map.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div #mapconvas class=\"mapconvas\">\r\n  <div></div>\r\n  <div class=\"selectCenter\">\r\n    <button class=\"btn btn-default selectbtn\" *ngIf=\"State == 'select'\" (click)=\"select()\" #selection></button>\r\n  </div>\r\n  <div></div>\r\n</div>\r\n"
+module.exports = "<div #mapconvas class=\"mapconvas\">\r\n  <!-- <div></div>\r\n  <div class=\"selectCenter\"> -->\r\n    <!-- <button class=\"btn btn-default selectbtn\" *ngIf=\"stateString == 'select'\" (click)=\"select()\" #selection></button> -->\r\n    <button class=\"btn btn-default selectbtn\" (click)=\"select()\" #selection>انتخاب</button>\r\n  <!-- </div>\r\n  <div></div> -->\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ "./src/app/directives/map/map.component.less":
 /***/ (function(module, exports) {
 
-module.exports = ":host(app-map) {\n  width: 100%;\n}\n.mapconvas {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch;\n  width: 100%;\n  height: 100%;\n}\n.mapconvas .selectCenter {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: end;\n      -ms-flex-align: end;\n          align-items: flex-end;\n  width: 80%;\n}\n"
+module.exports = ":host(app-map) {\n  width: 100%;\n}\n.mapconvas {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch;\n  width: 100%;\n  height: 100%;\n  z-index: 1000;\n}\n.mapconvas > div {\n  z-index: -100;\n}\n.mapconvas .selectCenter {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: end;\n      -ms-flex-align: end;\n          align-items: flex-end;\n  width: 99%;\n}\n"
 
 /***/ }),
 
@@ -531,10 +531,10 @@ var MapComponent = /** @class */ (function () {
         set: function (value) {
             this._state = value;
             if (this._map && value === map_state_enum_1.MapState.select) {
-                this.MakeSelection();
+                // this.MakeSelection();
             }
             if (this._map && value === map_state_enum_1.MapState.show) {
-                this.MakeShow();
+                //  this.MakeShow();
             }
         },
         enumerable: true,
@@ -543,6 +543,13 @@ var MapComponent = /** @class */ (function () {
     Object.defineProperty(MapComponent.prototype, "SelectMarker", {
         set: function (value) {
             this._selectMarker = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(MapComponent.prototype, "stateString", {
+        get: function () {
+            return this._state.toString();
         },
         enumerable: true,
         configurable: true
@@ -558,13 +565,13 @@ var MapComponent = /** @class */ (function () {
                     zoom: 16
                 }
             });
-            console.log(self._map);
-            console.log(location.latLng);
-            console.log(plugin.google.maps.event.MAP_READY);
             self._map.on(plugin.google.maps.event.MAP_READY, function () {
                 console.log("mapready");
-                console.log(self._map);
+                console.log(self._state);
                 self._map.setMyLocationEnabled(true);
+                self._map.setClickable(true);
+                self._map.setCompassEnabled(true);
+                self._map.setAllGesturesEnabled(true);
                 if (self._state === map_state_enum_1.MapState.select) {
                     self.MakeSelection(location.latLng);
                 }
@@ -603,7 +610,9 @@ var MapComponent = /** @class */ (function () {
     MapComponent.prototype.AddMarkers = function (markers) {
     };
     MapComponent.prototype.MakeSelection = function (location) {
+        console.log(JSON.stringify(this._selectMarker));
         var options = this.MakeMarkerOption(this._selectMarker, location);
+        console.log(JSON.stringify(options));
         var self = this;
         this._map.addMarker(options, function (marker) {
             self._selectMarker.id = marker.id;
@@ -627,6 +636,10 @@ var MapComponent = /** @class */ (function () {
                 option[propery] = element;
             }
         }
+        if (location) {
+            option["position"] = location;
+        }
+        return option;
     };
     MapComponent.prototype.Select = function () {
         if (this._selectMarker && this._state === map_state_enum_1.MapState.select) {
@@ -795,7 +808,7 @@ module.exports = "<div class=\"container-fluid\">\r\n\r\n  <ul class=\"nav nav-t
 /***/ "./src/app/home/dashboard.component.less":
 /***/ (function(module, exports) {
 
-module.exports = ".navbar-inverse {\n  background-color: #ca6e04 !important;\n  border-color: #ca6e04 !important;\n  color: #ffffff !important;\n}\n.navbar-inverse .navbar-text {\n  color: #b1b1b1 !important;\n}\n.navbar-inverse .navbar-brand {\n  color: #ffffff !important;\n}\n.sidebara-toggle {\n  border: 0px !important;\n  display: block;\n  float: left !important;\n}\n.sidebara-toggle:hover {\n  background-color: #a15701 !important;\n}\n#map {\n  background-color: gray;\n  width: 100%;\n  padding-top: 62%;\n  position: relative;\n}\n#mapcnt {\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n}\n"
+module.exports = ".navbar-inverse {\n  background-color: #ca6e04 !important;\n  border-color: #ca6e04 !important;\n  color: #ffffff !important;\n}\n.navbar-inverse .navbar-text {\n  color: #b1b1b1 !important;\n}\n.navbar-inverse .navbar-brand {\n  color: #ffffff !important;\n}\n.sidebara-toggle {\n  border: 0px !important;\n  display: block;\n  float: left !important;\n}\n.sidebara-toggle:hover {\n  background-color: #a15701 !important;\n}\n#map {\n  position: relative;\n}\n#map::before {\n  content: \" \";\n  display: block;\n  width: 100%;\n  padding-top: 62%;\n  z-index: -100;\n}\n#mapcnt {\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n}\n"
 
 /***/ }),
 
@@ -895,6 +908,13 @@ var DashboardComponent = /** @class */ (function () {
     DashboardComponent.prototype.mapSelcted = function (marker) {
         this.dialog.alert("Your Location is \r\n lat:" + marker.position.lat + " \r\n lng:" + marker.position.lng);
     };
+    Object.defineProperty(DashboardComponent.prototype, "mapState", {
+        get: function () {
+            return this._mapState;
+        },
+        enumerable: true,
+        configurable: true
+    });
     DashboardComponent = __decorate([
         core_1.Component({
             selector: 'app-dashboard',
