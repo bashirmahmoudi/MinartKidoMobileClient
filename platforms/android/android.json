@@ -117,6 +117,10 @@
             {
               "xml": "<preference name=\"android-minSdkVersion\" value=\"19\" />",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"RequestLocationAccuracy\"><param name=\"android-package\" value=\"cordova.plugin.RequestLocationAccuracy\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -246,6 +250,9 @@
       "PACKAGE_NAME": "com.minart.kido"
     },
     "phonegap-nfc": {
+      "PACKAGE_NAME": "com.minart.kido"
+    },
+    "cordova-plugin-request-location-accuracy": {
       "PACKAGE_NAME": "com.minart.kido"
     }
   },
@@ -545,6 +552,14 @@
       "file": "plugins/phonegap-nfc/www/phonegap-nfc.js",
       "pluginId": "phonegap-nfc",
       "runs": true
+    },
+    {
+      "id": "cordova-plugin-request-location-accuracy.RequestLocationAccuracy",
+      "file": "plugins/cordova-plugin-request-location-accuracy/www/android/RequestLocationAccuracy.js",
+      "pluginId": "cordova-plugin-request-location-accuracy",
+      "clobbers": [
+        "cordova.plugins.locationAccuracy"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -560,6 +575,7 @@
     "cordova-plugin-networkinterface": "1.2.0",
     "cordova-plugin-statusbar": "2.4.1",
     "cordova-sqlcipher-adapter": "0.1.12-rc2",
-    "phonegap-nfc": "0.7.1"
+    "phonegap-nfc": "0.7.1",
+    "cordova-plugin-request-location-accuracy": "2.2.2"
   }
 }

@@ -294,6 +294,14 @@ module.exports = [
     "file": "plugins/phonegap-nfc/www/phonegap-nfc.js",
     "pluginId": "phonegap-nfc",
     "runs": true
+  },
+  {
+    "id": "cordova-plugin-request-location-accuracy.RequestLocationAccuracy",
+    "file": "plugins/cordova-plugin-request-location-accuracy/www/android/RequestLocationAccuracy.js",
+    "pluginId": "cordova-plugin-request-location-accuracy",
+    "clobbers": [
+      "cordova.plugins.locationAccuracy"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -311,7 +319,8 @@ module.exports.metadata =
   "cordova-plugin-networkinterface": "1.2.0",
   "cordova-plugin-statusbar": "2.4.1",
   "cordova-sqlcipher-adapter": "0.1.12-rc2",
-  "phonegap-nfc": "0.7.1"
+  "phonegap-nfc": "0.7.1",
+  "cordova-plugin-request-location-accuracy": "2.2.2"
 };
 // BOTTOM OF METADATA
 });

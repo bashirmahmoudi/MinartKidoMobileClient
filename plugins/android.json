@@ -45,6 +45,9 @@
     },
     "phonegap-nfc": {
       "PACKAGE_NAME": "com.minart.kido"
+    },
+    "cordova-plugin-request-location-accuracy": {
+      "PACKAGE_NAME": "com.minart.kido"
     }
   },
   "dependent_plugins": {

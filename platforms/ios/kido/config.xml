@@ -91,6 +91,12 @@
     <feature name="PushNotification">
         <param name="ios-package" value="PushPlugin" />
     </feature>
+    <feature name="LocalNotification">
+        <param name="ios-package" value="APPLocalNotification" />
+    </feature>
+    <feature name="RequestLocationAccuracy">
+        <param name="ios-package" value="RequestLocationAccuracy" />
+    </feature>
     <name>kido</name>
     <description>
         Kids entertainment application
@@ -100,6 +106,7 @@
     </author>
     <content src="index.html" />
     <hook src="scripts/prepareAngular2App.js" type="befor_prepare" />
+    <hook src="scripts/after_platform_add.js" type="after_platform_add" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -134,7 +141,4 @@
     <preference name="android-minSdkVersion" value="16" />
     <preference name="loadUrlTimeoutValue" value="600000" />
     <preference name="KeepRunning" value="true" />
-    <feature name="LocalNotification">
-        <param name="ios-package" value="APPLocalNotification" />
-    </feature>
 </widget>

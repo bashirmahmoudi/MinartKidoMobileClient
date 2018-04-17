@@ -352,7 +352,8 @@ module.exports.metadata =
     "cordova-plugin-statusbar": "2.4.1",
     "cordova-sqlcipher-adapter": "0.1.12-rc2",
     "phonegap-nfc": "0.7.1",
-    "phonegap-plugin-push": "2.2.2"
+    "phonegap-plugin-push": "2.2.2",
+    "cordova-plugin-request-location-accuracy": "2.2.2"
 }
 // BOTTOM OF METADATA
 });

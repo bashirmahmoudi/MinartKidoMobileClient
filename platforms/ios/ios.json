@@ -111,6 +111,10 @@
             {
               "xml": "<feature name=\"LocalNotification\"><param name=\"ios-package\" value=\"APPLocalNotification\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"RequestLocationAccuracy\"><param name=\"ios-package\" value=\"RequestLocationAccuracy\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -252,6 +256,9 @@
       "PACKAGE_NAME": "com.minart.kido"
     },
     "cordova-plugin-local-notification": {
+      "PACKAGE_NAME": "com.minart.kido"
+    },
+    "cordova-plugin-request-location-accuracy": {
       "PACKAGE_NAME": "com.minart.kido"
     }
   },
@@ -551,6 +558,14 @@
         "cordova.plugins.notification.local.core",
         "plugin.notification.local.core"
       ]
+    },
+    {
+      "id": "cordova-plugin-request-location-accuracy.RequestLocationAccuracy",
+      "file": "plugins/cordova-plugin-request-location-accuracy/www/ios/RequestLocationAccuracy.js",
+      "pluginId": "cordova-plugin-request-location-accuracy",
+      "clobbers": [
+        "cordova.plugins.locationAccuracy"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -567,6 +582,7 @@
     "cordova-sqlcipher-adapter": "0.1.12-rc2",
     "phonegap-nfc": "0.7.1",
     "phonegap-plugin-push": "2.2.2",
-    "cordova-plugin-local-notification": "0.9.0-beta.2"
+    "cordova-plugin-local-notification": "0.9.0-beta.2",
+    "cordova-plugin-request-location-accuracy": "2.2.2"
   }
 }

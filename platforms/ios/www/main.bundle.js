@@ -475,14 +475,14 @@ var MapState;
 /***/ "./src/app/directives/map/map.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div #mapconvas class=\"mapconvas\">\n  <div></div>\n  <div class=\"selectCenter\">\n    <button class=\"btn btn-default selectbtn\" *ngIf=\"State == 'select'\" (click)=\"select()\" #selection></button>\n  </div>\n  <div></div>\n</div>\n"
+module.exports = "<div #mapconvas class=\"mapconvas\">\r\n  <!-- <div></div>\r\n  <div class=\"selectCenter\"> -->\r\n    <!-- <button class=\"btn btn-default selectbtn\" *ngIf=\"stateString == 'select'\" (click)=\"select()\" #selection></button> -->\r\n    <button class=\"btn btn-default selectbtn\" (click)=\"select()\" #selection>انتخاب</button>\r\n  <!-- </div>\r\n  <div></div> -->\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ "./src/app/directives/map/map.component.less":
 /***/ (function(module, exports) {
 
-module.exports = ".mapconvas {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch;\n}\n.mapconvas .selectCenter {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: end;\n      -ms-flex-align: end;\n          align-items: flex-end;\n}\n"
+module.exports = ":host(app-map) {\n  width: 100%;\n}\n.mapconvas {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch;\n  width: 100%;\n  height: 100%;\n  z-index: 1000;\n}\n.mapconvas > div {\n  z-index: -100;\n}\n.mapconvas .selectCenter {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: end;\n      -ms-flex-align: end;\n          align-items: flex-end;\n  width: 99%;\n}\n"
 
 /***/ }),
 
@@ -513,6 +513,9 @@ var MapComponent = /** @class */ (function () {
                 title: 'Select your location'
             };
         }
+        this._locationOption = {
+            enableHighAccuracy: true
+        };
     }
     Object.defineProperty(MapComponent.prototype, "Markers", {
         set: function (value) {
@@ -528,10 +531,10 @@ var MapComponent = /** @class */ (function () {
         set: function (value) {
             this._state = value;
             if (this._map && value === map_state_enum_1.MapState.select) {
-                this.MakeSelection();
+                // this.MakeSelection();
             }
             if (this._map && value === map_state_enum_1.MapState.show) {
-                this.MakeShow();
+                //  this.MakeShow();
             }
         },
         enumerable: true,
@@ -544,17 +547,31 @@ var MapComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(MapComponent.prototype, "stateString", {
+        get: function () {
+            return this._state.toString();
+        },
+        enumerable: true,
+        configurable: true
+    });
     MapComponent.prototype.ngOnInit = function () {
         var self = this;
         plugin.google.maps.LocationService.getMyLocation(this._locationOption, function (location) {
+            console.log(self._locationOption);
+            console.log(self._convas.nativeElement);
             self._map = plugin.google.maps.Map.getMap(self._convas.nativeElement, {
                 'camera': {
                     target: location.latLng,
                     zoom: 16
                 }
             });
-            self._map.setMyLocationEnabled(true);
-            self._map.addEventListener(plugin.google.maps.event.MAP_READY, function () {
+            self._map.on(plugin.google.maps.event.MAP_READY, function () {
+                console.log("mapready");
+                console.log(self._state);
+                self._map.setMyLocationEnabled(true);
+                self._map.setClickable(true);
+                self._map.setCompassEnabled(true);
+                self._map.setAllGesturesEnabled(true);
                 if (self._state === map_state_enum_1.MapState.select) {
                     self.MakeSelection(location.latLng);
                 }
@@ -562,7 +579,7 @@ var MapComponent = /** @class */ (function () {
                     self.MakeShow();
                 }
             });
-            self._map.addEventListener(plugin.google.maps.event.MAP_LONG_CLICK, function (latLng) {
+            self._map.on(plugin.google.maps.event.MAP_LONG_CLICK, function (latLng) {
                 if (self._selectMarker && self._state === map_state_enum_1.MapState.select) {
                     self._selectMarker["marker"].setPosition({
                         lat: latLng.lat,
@@ -570,7 +587,7 @@ var MapComponent = /** @class */ (function () {
                     });
                 }
             });
-            self._map.addEventListener(plugin.google.maps.event.CAMERA_MOVE, function (cameraPosition) {
+            self._map.on(plugin.google.maps.event.CAMERA_MOVE, function (cameraPosition) {
                 if (self._selectMarker && self._state === map_state_enum_1.MapState.select) {
                     self._selectMarker["marker"].setPosition({
                         lat: cameraPosition.target.lat,
@@ -578,7 +595,7 @@ var MapComponent = /** @class */ (function () {
                     });
                 }
             });
-            self._map.addEventListener(plugin.google.maps.event.CAMERA_MOVE_END, function (cameraPosition) {
+            self._map.on(plugin.google.maps.event.CAMERA_MOVE_END, function (cameraPosition) {
                 if (self._selectMarker && self._state === map_state_enum_1.MapState.select) {
                     self._selectMarker["marker"].setPosition({
                         lat: cameraPosition.target.lat,
@@ -588,10 +605,14 @@ var MapComponent = /** @class */ (function () {
             });
         });
     };
+    MapComponent.prototype.ngAfterViewChecked = function () {
+    };
     MapComponent.prototype.AddMarkers = function (markers) {
     };
     MapComponent.prototype.MakeSelection = function (location) {
+        console.log(JSON.stringify(this._selectMarker));
         var options = this.MakeMarkerOption(this._selectMarker, location);
+        console.log(JSON.stringify(options));
         var self = this;
         this._map.addMarker(options, function (marker) {
             self._selectMarker.id = marker.id;
@@ -615,6 +636,10 @@ var MapComponent = /** @class */ (function () {
                 option[propery] = element;
             }
         }
+        if (location) {
+            option["position"] = location;
+        }
+        return option;
     };
     MapComponent.prototype.Select = function () {
         if (this._selectMarker && this._state === map_state_enum_1.MapState.select) {
@@ -776,14 +801,14 @@ exports.SidebarComponent = SidebarComponent;
 /***/ "./src/app/home/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\r\n\r\n  <ul class=\"nav nav-tabs\" role=\"tablist\">\r\n    <li role=\"presentation\" class=\"active\">\r\n      <a href=\"#map\" aria-controls=\"map\" role=\"tab\" data-toggle=\"tab\">Map</a>\r\n    </li>\r\n    <li role=\"presentation\">\r\n      <a href=\"#nfctag\" aria-controls=\"nfctag\" role=\"tab\" data-toggle=\"tab\">Nfc</a>\r\n    </li>\r\n    <li role=\"presentation\">\r\n      <a href=\"#pushNotification\" aria-controls=\"pushNotification\" role=\"tab\" data-toggle=\"tab\">Notification</a>\r\n    </li>\r\n  </ul>\r\n\r\n  <div class=\"tab-content\">\r\n    <div role=\"tabpanel\" class=\"tab-pane fade in active\" id=\"map\">\r\n      <div class=\"container\" id=\"mapcnt\">\r\n        <app-map #mainMap [state]=\"mapState\" [useMyLocation]=\"mapUseMyLocation\" (selectionChanged)=\"mapSelected($event)\"></app-map>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div role=\"tabpanel\" class=\"tab-pane fade\" id=\"nfctag\">\r\n      <div class=\"container\">\r\n        <form class=\"form-inline\">\r\n          <div class=\"form-group\">\r\n            <label for=\"testNfcMessage\">Message: </label>\r\n            <input type=\"text\" class=\"form-control\" id=\"testNfcMessage\" placeholder=\"Test message ...\" [value]=\"nfcMessage\" >\r\n          </div>\r\n          <button type=\"button\" id=\"sidebarCollapse\" class=\"btn btn-info navbar-btn\" (click)=\"startNfc()\">\r\n            <i class=\"glyphicon glyphicon-export\"></i>\r\n            StartNfc\r\n          </button>\r\n        </form>\r\n      </div>\r\n\r\n    </div>\r\n    <div role=\"tabpanel\" class=\"tab-pane fade\" id=\"pushNotification\">\r\n      <div class=\"container-fluid\">\r\n        <div class=\"row\">\r\n          <h1> Registration Id:</h1>\r\n          <p> {{RegistrationId}} </p>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid\">\r\n\r\n  <ul class=\"nav nav-tabs\" role=\"tablist\">\r\n    <li role=\"presentation\" class=\"active\">\r\n      <a href=\"#map\" aria-controls=\"map\" role=\"tab\" data-toggle=\"tab\">Map</a>\r\n    </li>\r\n    <li role=\"presentation\">\r\n      <a href=\"#nfctag\" aria-controls=\"nfctag\" role=\"tab\" data-toggle=\"tab\">Nfc</a>\r\n    </li>\r\n    <li role=\"presentation\">\r\n      <a href=\"#pushNotification\" aria-controls=\"pushNotification\" role=\"tab\" data-toggle=\"tab\">Notification</a>\r\n    </li>\r\n  </ul>\r\n\r\n  <div class=\"tab-content\">\r\n    <div role=\"tabpanel\" class=\"tab-pane fade in active\" id=\"map\">\r\n        <div class=\"container\" id=\"mapcnt\">\r\n          <app-map #mainMap [state]=\"mapState\" [useMyLocation]=\"mapUseMyLocation\" (selectionChanged)=\"mapSelected($event)\"></app-map>\r\n        </div>\r\n    </div>\r\n\r\n    <div role=\"tabpanel\" class=\"tab-pane fade\" id=\"nfctag\">\r\n      <div class=\"container\">\r\n        <form class=\"form-inline\">\r\n          <div class=\"form-group\">\r\n            <label for=\"testNfcMessage\">Message: </label>\r\n            <input type=\"text\" class=\"form-control\" id=\"testNfcMessage\" placeholder=\"Test message ...\" [value]=\"nfcMessage\">\r\n          </div>\r\n          <button type=\"button\" id=\"sidebarCollapse\" class=\"btn btn-info navbar-btn\" (click)=\"startNfc()\">\r\n            <i class=\"glyphicon glyphicon-export\"></i>\r\n            StartNfc\r\n          </button>\r\n        </form>\r\n      </div>\r\n\r\n    </div>\r\n    <div role=\"tabpanel\" class=\"tab-pane fade\" id=\"pushNotification\">\r\n      <div class=\"container-fluid\">\r\n        <div class=\"row\">\r\n          <h1> Registration Id:</h1>\r\n          <p> {{RegistrationId}} </p>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
 /***/ "./src/app/home/dashboard.component.less":
 /***/ (function(module, exports) {
 
-module.exports = ".navbar-inverse {\n  background-color: #ca6e04 !important;\n  border-color: #ca6e04 !important;\n  color: #ffffff !important;\n}\n.navbar-inverse .navbar-text {\n  color: #b1b1b1 !important;\n}\n.navbar-inverse .navbar-brand {\n  color: #ffffff !important;\n}\n.sidebara-toggle {\n  border: 0px !important;\n  display: block;\n  float: left !important;\n}\n.sidebara-toggle:hover {\n  background-color: #a15701 !important;\n}\n#map {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch;\n}\n#mapcnt {\n  width: 100%;\n}\n"
+module.exports = ".navbar-inverse {\n  background-color: #ca6e04 !important;\n  border-color: #ca6e04 !important;\n  color: #ffffff !important;\n}\n.navbar-inverse .navbar-text {\n  color: #b1b1b1 !important;\n}\n.navbar-inverse .navbar-brand {\n  color: #ffffff !important;\n}\n.sidebara-toggle {\n  border: 0px !important;\n  display: block;\n  float: left !important;\n}\n.sidebara-toggle:hover {\n  background-color: #a15701 !important;\n}\n#map {\n  position: relative;\n}\n#map::before {\n  content: \" \";\n  display: block;\n  width: 100%;\n  padding-top: 62%;\n  z-index: -100;\n}\n#mapcnt {\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n}\n"
 
 /***/ }),
 
@@ -883,6 +908,13 @@ var DashboardComponent = /** @class */ (function () {
     DashboardComponent.prototype.mapSelcted = function (marker) {
         this.dialog.alert("Your Location is \r\n lat:" + marker.position.lat + " \r\n lng:" + marker.position.lng);
     };
+    Object.defineProperty(DashboardComponent.prototype, "mapState", {
+        get: function () {
+            return this._mapState;
+        },
+        enumerable: true,
+        configurable: true
+    });
     DashboardComponent = __decorate([
         core_1.Component({
             selector: 'app-dashboard',
@@ -941,7 +973,7 @@ exports.HomeModule = HomeModule;
 /***/ "./src/app/sections/nfc.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  nfc works!\n</p>\n"
+module.exports = "<p>\r\n  nfc works!\r\n</p>\r\n"
 
 /***/ }),
 

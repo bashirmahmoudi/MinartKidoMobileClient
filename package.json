@@ -47,7 +47,8 @@
         "LOCATION_WHEN_IN_USE_DESCRIPTION": "Location is in Use",
         "LOCATION_ALWAYS_USAGE_DESCRIPTION": "Location always descript"
       },
-      "cordova-plugin-local-notification": {}
+      "cordova-plugin-local-notification": {},
+      "cordova-plugin-request-location-accuracy": {}
     }
   },
   "dependencies": {

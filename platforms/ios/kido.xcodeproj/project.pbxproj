@@ -95,6 +95,7 @@
 		2154EFFBEE414AD7888F87E6 /* UNUserNotificationCenter+APPLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C639B37C684DABB70B73E1 /* UNUserNotificationCenter+APPLocalNotification.m */; };
 		A47361B14FBD47B6885DA55C /* UNNotificationRequest+APPLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C136C6AD0B94594992E684F /* UNNotificationRequest+APPLocalNotification.m */; };
 		38DE0441ABC34643BE0331C4 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970DC9C9EF9B4FE8B104B739 /* UserNotifications.framework */; };
+		0017D9B6EE6D4C2598E13204 /* RequestLocationAccuracy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B418DA3D8744F748DF29DE8 /* RequestLocationAccuracy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -250,6 +251,8 @@
 		8A2EBF5A9B7346E8A15AF333 /* UNUserNotificationCenter+APPLocalNotification.h */ = {isa = PBXFileReference; name = "UNUserNotificationCenter+APPLocalNotification.h"; path = "cordova-plugin-local-notification/UNUserNotificationCenter+APPLocalNotification.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		C3BA17AA260A4DDDB5F052CC /* UNNotificationRequest+APPLocalNotification.h */ = {isa = PBXFileReference; name = "UNNotificationRequest+APPLocalNotification.h"; path = "cordova-plugin-local-notification/UNNotificationRequest+APPLocalNotification.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		970DC9C9EF9B4FE8B104B739 /* UserNotifications.framework */ = {isa = PBXFileReference; name = "UserNotifications.framework"; path = "System/Library/Frameworks/UserNotifications.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		8B418DA3D8744F748DF29DE8 /* RequestLocationAccuracy.m */ = {isa = PBXFileReference; name = "RequestLocationAccuracy.m"; path = "cordova-plugin-request-location-accuracy/RequestLocationAccuracy.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		D5549CCF80A0417794CA4760 /* RequestLocationAccuracy.h */ = {isa = PBXFileReference; name = "RequestLocationAccuracy.h"; path = "cordova-plugin-request-location-accuracy/RequestLocationAccuracy.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -490,6 +493,8 @@
 				02112A40DC5B43939B0F79BE /* APPNotificationOptions.h */,
 				8A2EBF5A9B7346E8A15AF333 /* UNUserNotificationCenter+APPLocalNotification.h */,
 				C3BA17AA260A4DDDB5F052CC /* UNNotificationRequest+APPLocalNotification.h */,
+				8B418DA3D8744F748DF29DE8 /* RequestLocationAccuracy.m */,
+				D5549CCF80A0417794CA4760 /* RequestLocationAccuracy.h */,
 			);
 			name = Plugins;
 			path = "kido/Plugins";
@@ -650,6 +655,7 @@
 				1560B317095241F09176E81F /* APPNotificationOptions.m in Sources */,
 				2154EFFBEE414AD7888F87E6 /* UNUserNotificationCenter+APPLocalNotification.m in Sources */,
 				A47361B14FBD47B6885DA55C /* UNNotificationRequest+APPLocalNotification.m in Sources */,
+				0017D9B6EE6D4C2598E13204 /* RequestLocationAccuracy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
