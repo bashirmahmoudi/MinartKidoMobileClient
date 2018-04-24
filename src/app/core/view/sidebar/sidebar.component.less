@@ -1,7 +1,269 @@
-:host(app-sidebar) {
+// # default variables
+// #mainmenu
+@Sidebarainmenu_minWidth: 250px;
+@Sidebar_Main_Background: @Theme_Main;
+@Sidebar_Main_Color: @Theme_Main_Dark_Forecolor;
+@Sidebar_Header_Padding: 20px;
+@Sidebar_Components_Padding: 20px 0;
+@Sidebar_Header_Background: @Theme_Main_Dark;
+@Sidebar_PMenu_Padding: @Sidebar_Menu_Padding;
+@Sidebar_PMenu_Font_Size: @Sidebar_Menu_Font_Size;
+@Sidebar_PMenu_Font_Weight: 300;
+@Sidebar_PMenu_Line_Height: 1.7em;
+@Sidebar_Menu_Expantion_Side_Padding: 20px;
+@Sidebar_Menu_Expantion_Font_Size: 0.6em;
+@Sidebar_Menu_Padding: 10px;
+@Sidebar_Menu_Font_Size: 1.1em;
+@Sidebar_Menu_Hover_Color: @Theme_Main_Dark;
+@Sidebar_Menu_Hover_Background: @Theme_Main_Dark_Forecolor;
+@Sidebar_Menu_Active_Background: @Theme_Main_Dark;
+@Sidebar_Dismiss_Size: 35px;
+@Sidebar_Dismiss_Background_Color: @Theme_Main_Light;
+@Sidebar_Dismiss_Padding: 10px;
+@Sidebar_SubMenu_Font_Size: 0.9em;
+@Sidebar_SubMenu_Padding: 30px;
+@Sidebar_SubMenu_Background: @Theme_Main_Dark;
+@Sidebar_Fancy_Menu_Transition: width .2s ease-in;
+
+@Sidebar_Fancy_Color1: #1a1a1a;
+@Sidebar_Fancy_Color2: #ec1b5a;
+@Sidebar_Fancy_Color3: #79aefe;
+@Sidebar_Fancy_Color4: #314190;
+@Sidebar_Fancy_Color5: #279636;
+@Sidebar_Fancy_Color6: #7d5d81;
+@Sidebar_Fancy_Color7: #ead24c;
+@Sidebar_Fancy_Color8: #2d2366;
+@Sidebar_Fancy_Color9: #35acdf;
+
+// # default mixin
+.transition(@transition) when (default()){
+  -webkit-transition: @transition;
+  -moz-transition: @transition;
+  transition: @transition;
+}
+
+.SideMenuHost() when (default()) {
     display: inline-block;
     color: @Sidebar_Fancy_Color1;
 }
 
+.SideMenuContainer() when (default()) {
+    width: @Sidebarainmenu_minWidth;
+    position: fixed;
+    top: 0;
+    left: -@Sidebarainmenu_minWidth;
+    height: 100vh;
+    background: @Sidebar_Main_Background;
+    transition: @Menu_Transition;
+    // overflow-y: scroll;
+    box-shadow: @Theme_Box_Shadow;
+    width: @Sidebarainmenu_minWidth;
+    /* top layer */
+    z-index: 9999;
+    color:@Sidebar_Main_Color;
+}
+
+.SideMenuHeader() when (default()) {
+    padding: @Sidebar_Header_Padding;
+    background: @Sidebar_Header_Background;
+    display: block;
+}
+
+.SideMenuDismissButton() when (default()) {
+    width: @Sidebar_Dismiss_Size;
+      height: @Sidebar_Dismiss_Size;
+      line-height: @Sidebar_Dismiss_Size;
+      text-align: center;
+      background: @Sidebar_Dismiss_Background_Color;
+      position: absolute;
+      top: @Sidebar_Dismiss_Padding;
+      right: @Sidebar_Dismiss_Padding;
+      cursor: pointer;
+      .transition(@Menu_Transition);
+      border-radius: @Sidebar_Dismiss_Size;
+      z-index: 9999;
+}
+
+:host {
+    .SideMenuHost();
+}
+
+#sidemenu {
+    .SideMenuContainer();
+
+    &.active {
+        left: 0;
+    }
+
+    .sidebar-header {
+        .SideMenuHeader();
+    }
+
+    .list-unstyled {
+        list-style: none;
+    }
+
+    ul {
+      &.components{
+        // padding: @Sidebar_Components_Padding;
+        border-bottom: 1px solid #47748b;
+      }
+
+      p {
+        color: @Sidebar_Main_Color;
+        padding: @Sidebar_PMenu_Padding;
+        font-size: @Sidebar_PMenu_Font_Size;
+        font-weight: @Sidebar_PMenu_Font_Weight;
+        //line-height: @Sidebar_PMenu_Line_Height;
+      }
+
+      ul {
+        a {
+          font-size: @Sidebar_SubMenu_Font_Size !important;
+          padding-left: @Sidebar_SubMenu_Padding !important;
+          background: @Sidebar_SubMenu_Background;
+        }
+      }
+
+      li {
+        a {
+          &[data-toggle="collapse"] {
+            position: relative;
+          }
+
+          &[aria-expanded="false"],
+          &[aria-expanded="true"] {
+            &::before {
+              content: '\e259';
+              display: block;
+              position: absolute;
+              right: @Sidebar_Menu_Expantion_Side_Padding;
+              font-family: 'Glyphicons Halflings';
+              font-size: @Sidebar_Menu_Expantion_Font_Size;
+            }
+          }
+
+          padding: @Sidebar_Menu_Padding;
+          font-size: @Sidebar_Menu_Font_Size;
+          display: block;
+          color: @Sidebar_Main_Color;
+
+          &:hover{
+            color: @Sidebar_Menu_Hover_Color;
+            background: @Sidebar_Menu_Hover_Background
+          }
+        }
+
+        position: relative;
+        //line-height: 20px;
+        display: inline-block;
+        width: 100%;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          height: 100%;
+          width: 3px;
+          background-color: @Sidebar_Main_Background;
+          .transition(@Sidebar_Fancy_Menu_Transition);
+        }
+
+        &:first-child{
+          a {
+            background-color: @Sidebar_Fancy_Color1;
+          }
+        }
+
+        &:nth-child(2) {
+          &::before {
+            background-color: @Sidebar_Fancy_Color2;
+          }
+        }
+
+        &:nth-child(3) {
+          &::before {
+            background-color: @Sidebar_Fancy_Color3;
+          }
+        }
+
+        &:nth-child(4) {
+          &::before {
+            background-color: @Sidebar_Fancy_Color4;
+          }
+        }
+
+        &:nth-child(5) {
+          &::before {
+            background-color: @Sidebar_Fancy_Color5;
+          }
+        }
+
+        &:nth-child(6) {
+          &::before {
+            background-color: @Sidebar_Fancy_Color6;
+          }
+        }
+
+        &:nth-child(7) {
+          &::before {
+            background-color: @Sidebar_Fancy_Color7;
+          }
+        }
+
+        &:nth-child(8) {
+          &::before {
+            background-color: @Sidebar_Fancy_Color8;
+          }
+        }
+
+        &:nth-child(9) {
+          &::before {
+            background-color: @Sidebar_Fancy_Color9;
+          }
+        }
+
+        &:hover,
+        &.open:hover {
+          &::before {
+            width: 100%;
+            .transition(@Sidebar_Fancy_Menu_Transition);
+          }
+        }
+
+        &,
+        &.open {
+          a {
+            &:hover,
+            &:active,
+            &:focus {
+              text-decoration: none;
+              background: transparent !important;
+            }
+          }
+        }
+
+        &.active {
+          &>a {
+            color: @Sidebar_Main_Color;
+            //background: @Sidebar_Menu_Active_Background;
+          }
+
+          &::before {
+            width: 100%;
+            .transition(@Sidebar_Fancy_Menu_Transition);
+          }
+        }
+      }
+    }
+
+    #dismiss {
+        .SideMenuDismissButton();
+    }
+}
+
 
 @import (optional) '../../../../variable.less';
+@import (optional) '../../../../mixin.less';

@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { CoreDirectivesModule } from './core/view/core-directives.module';
+import { MinartCoreModule } from './core/minart-core.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { CoreDirectivesModule } from './core/view/core-directives.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreDirectivesModule
+    CoreDirectivesModule,
+    MinartCoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

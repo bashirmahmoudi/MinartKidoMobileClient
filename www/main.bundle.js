@@ -51,7 +51,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<minart-sidebar1></minart-sidebar1>\n<h1>Hello from appcom</h1>\n<router-outlet></router-outlet>\n"
+module.exports = "<minart-sidebar></minart-sidebar>\n<h1>Hello from appcom</h1>\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -179,14 +179,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 /***/ "./src/app/core/view/sidebar/sidebar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav #sidemenu id=\"sidemenu\">\n  <perfect-scrollbar>\n    <!-- Close Sidebar Button -->\n    <div id=\"dismiss\" (click)=\"dismiss()\">\n      <i class=\"glyphicon glyphicon-arrow-left\"></i>\n    </div>\n\n    <!-- <ng-content select=\"[app-sidebar-header]\"></ng-content> -->\n    <!-- Sidebar Header -->\n    <app-user-profile class=\"sidebar-header\">\n\n\n    </app-user-profile>\n\n    <!-- Sidbar Links -->\n    <ul class=\"list-unstyled components\">\n      <ng-container *ngFor=\"let item of MenuItems\">\n        <p *ngIf=\"item.type == 'header'\"> {{ item.display }}</p>\n        <li *ngIf=\"item.type == 'node'\" class=\"{{(item.state == 'active'? 'active ': ' ') + (item.cssClass? item.cssClass : '')}}\">\n          <a *ngIf=\"item.isLinkAbsolute\" href=\"{{item.link}}\">{{item.display}}</a>\n          <!-- Else it is route-->\n        </li>\n        <li *ngIf=\"item.type == 'seperator'\" class=\"seperator\"></li>\n        <li *ngIf=\"item.childs && item.childs.length > 0\">\n          <!-- <li> Link with dropdown items -->\n          <a data-toggle=\"collapse\" aria-expanded=\"false\" [attr.data-target]=\"'#' + item.id\">{{item.display}}</a>\n          <ul class=\"collapse list-unstyled\" id=\"{{item.id}}\">\n            <ng-container *ngFor=\"let citem of item.childs\">\n              <p *ngIf=\"citem.type == 'header'\"> {{ item.display }</p>\n              <li *ngIf=\"citem.type == 'node'\" class=\"{{(citem.state == 'active'? 'active ': ' ') + (item.cssClass? item.cssClass : '')}}\">\n                <a *ngIf=\"citem.isLinkAbsolute\" href=\"{{citem.link}}\">{{citem.display}}</a>\n                <!-- Else it is route-->\n              </li>\n              <li *ngIf=\"citem.type == 'seperator'\" class=\"seperator\"></li>\n            </ng-container>\n          </ul>\n        </li>\n      </ng-container>\n    </ul>\n\n    <ng-content select=\"[app-sidebar-footer]\"></ng-content>\n  </perfect-scrollbar>\n</nav>\n"
+module.exports = "<nav #sidemenu id=\"sidemenu\">\n  <perfect-scrollbar>\n    <!-- Close Sidebar Button -->\n    <div id=\"dismiss\" (click)=\"dismiss()\">\n      <i class=\"glyphicon glyphicon-arrow-left\"></i>\n    </div>\n\n    <ng-content select=\"[app-sidebar-header]\"></ng-content>\n    <!-- Sidebar Header -->\n    <!-- <app-user-profile class=\"sidebar-header\">\n\n\n    </app-user-profile> -->\n\n    <!-- Sidbar Links -->\n    <ul class=\"list-unstyled components\">\n      <ng-container *ngFor=\"let item of MenuItems\">\n        <p *ngIf=\"item.type == 'header'\"> {{ item.display }}</p>\n        <li *ngIf=\"item.type == 'node'\" class=\"{{(item.state == 'active'? 'active ': ' ') + (item.cssClass? item.cssClass : '')}}\">\n          <a *ngIf=\"item.isLinkAbsolute\" href=\"{{item.link}}\">{{item.display}}</a>\n          <!-- Else it is route-->\n        </li>\n        <li *ngIf=\"item.type == 'seperator'\" class=\"seperator\"></li>\n        <li *ngIf=\"item.childs && item.childs.length > 0\">\n          <!-- <li> Link with dropdown items -->\n          <a data-toggle=\"collapse\" aria-expanded=\"false\" [attr.data-target]=\"'#' + item.id\">{{item.display}}</a>\n          <ul class=\"collapse list-unstyled\" id=\"{{item.id}}\">\n            <ng-container *ngFor=\"let citem of item.childs\">\n              <p *ngIf=\"citem.type == 'header'\"> {{ item.display }</p>\n              <li *ngIf=\"citem.type == 'node'\" class=\"{{(citem.state == 'active'? 'active ': ' ') + (item.cssClass? item.cssClass : '')}}\">\n                <a *ngIf=\"citem.isLinkAbsolute\" href=\"{{citem.link}}\">{{citem.display}}</a>\n                <!-- Else it is route-->\n              </li>\n              <li *ngIf=\"citem.type == 'seperator'\" class=\"seperator\"></li>\n            </ng-container>\n          </ul>\n        </li>\n      </ng-container>\n    </ul>\n\n    <ng-content select=\"[app-sidebar-footer]\"></ng-content>\n  </perfect-scrollbar>\n</nav>\n"
 
 /***/ }),
 
 /***/ "./src/app/core/view/sidebar/sidebar.component.less":
 /***/ (function(module, exports) {
 
-module.exports = ":host(app-sidebar) {\n  display: inline-block;\n  color: #1a1a1a;\n}\n"
+module.exports = ":host {\n  display: inline-block;\n  color: #1a1a1a;\n}\n"
 
 /***/ }),
 
@@ -246,7 +246,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                 selector: 'minart-sidebar',
                 template: __webpack_require__("./src/app/core/view/sidebar/sidebar.component.html"),
                 styles: [__webpack_require__("./src/app/core/view/sidebar/sidebar.component.less")],
-                encapsulation: core_1.ViewEncapsulation.None
+                encapsulation: core_1.ViewEncapsulation.Emulated
             }),
             __metadata("design:paramtypes", [])
         ], SidebarComponent);
@@ -288,9 +288,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         core_1.enableProdMode();
     }
     // document.addEventListener('deviceready', () => {
-    platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(app_module_1.AppModule, {
-        defaultEncapsulation: core_1.ViewEncapsulation.None
-    }).catch(function (err) { return console.log(err); });
+    platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(app_module_1.AppModule, {}).catch(function (err) { return console.log(err); });
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 // }, false);

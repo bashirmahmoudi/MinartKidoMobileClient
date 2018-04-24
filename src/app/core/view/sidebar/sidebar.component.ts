@@ -5,8 +5,7 @@ import { IMenuItem } from '../../viewmodel/imenu-item';
 @Component({
   selector: 'minart-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.less'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./sidebar.component.less']
 })
 export class SidebarComponent implements OnInit {
 
