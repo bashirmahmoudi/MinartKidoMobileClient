@@ -4,7 +4,7 @@
     "outDir": "../out-tsc/app",
     "baseUrl": "./",
     "target": "ES5",
-    "module": "system",
+    "module": "amd",
     "types": [
       "../node_modules/@types/cordova",
       "../node_modules/@types/cordova-sqlite-storage",

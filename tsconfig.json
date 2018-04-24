@@ -1,8 +1,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "target":"ES5",
-    "module": "system",
+    "target": "ES5",
+    "module": "amd",
     "lib": [
       "es2017",
       "dom"

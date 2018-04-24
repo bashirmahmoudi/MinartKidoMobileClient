@@ -14,7 +14,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "ngbuild": "ng build --base-href",
+    "ngbuild": "ng build --base-href --deploy-url",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -44,6 +44,7 @@
     "@types/reflect-metadata": "^0.1.0",
     "bootstrap": "^3.3.7",
     "cordova-android": "^7.0.0",
+    "cordova-browser": "5.0.3",
     "cordova-custom-config": "^5.0.2",
     "cordova-ios": "^4.5.4",
     "cordova-plugin-badge": "^0.8.7",
