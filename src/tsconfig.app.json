@@ -9,7 +9,9 @@
       "../node_modules/@types/cordova",
       "../node_modules/@types/cordova-sqlite-storage",
       "../node_modules/@types/jquery",
-      "../node_modules/@types/node"
+      "../node_modules/@types/node",
+      "../plugins/cordova-plugin-device/types",
+      "../plugins/cordova-plugin-dialogs/types"
     ],
     "typeRoots": [
       "../node_modules/@types"

@@ -8,10 +8,10 @@ if (environment.production) {
   enableProdMode();
 }
 
-// document.addEventListener('deviceready', () => {
+ // document.addEventListener('deviceready', () => {
   platformBrowserDynamic().bootstrapModule(AppModule, {
     // defaultEncapsulation: ViewEncapsulation.None
   }).catch(err => console.log(err));
-// }, false);
+ // }, false);
 
 

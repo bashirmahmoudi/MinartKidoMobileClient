@@ -1,11 +1,10 @@
 {
-    "libz.tbd": 2,
+    "libz.tbd": 1,
     "AudioToolbox.framework": 1,
     "SystemConfiguration.framework": 2,
     "CoreTelephony.framework": 2,
     "Security.framework": 1,
-    "UserNotifications.framework": 1,
-    "CoreLocation.framework": 3,
+    "CoreLocation.framework": 2,
     "Accelerate.framework": 1,
     "CoreData.framework": 1,
     "CoreText.framework": 1,

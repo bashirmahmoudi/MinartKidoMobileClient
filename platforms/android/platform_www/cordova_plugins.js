@@ -17,14 +17,6 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-plugin-device.device",
-    "file": "plugins/cordova-plugin-device/www/device.js",
-    "pluginId": "cordova-plugin-device",
-    "clobbers": [
-      "device"
-    ]
-  },
-  {
     "id": "cordova-plugin-dialogs.notification",
     "file": "plugins/cordova-plugin-dialogs/www/notification.js",
     "pluginId": "cordova-plugin-dialogs",
@@ -87,32 +79,6 @@ module.exports = [
     "pluginId": "phonegap-plugin-push",
     "clobbers": [
       "PushNotification"
-    ]
-  },
-  {
-    "id": "cordova-plugin-local-notification.LocalNotification",
-    "file": "plugins/cordova-plugin-local-notification/www/local-notification.js",
-    "pluginId": "cordova-plugin-local-notification",
-    "clobbers": [
-      "cordova.plugins.notification.local"
-    ]
-  },
-  {
-    "id": "cordova-plugin-local-notification.LocalNotification.Core",
-    "file": "plugins/cordova-plugin-local-notification/www/local-notification-core.js",
-    "pluginId": "cordova-plugin-local-notification",
-    "clobbers": [
-      "cordova.plugins.notification.local.core",
-      "plugin.notification.local.core"
-    ]
-  },
-  {
-    "id": "cordova-plugin-local-notification.LocalNotification.Util",
-    "file": "plugins/cordova-plugin-local-notification/www/local-notification-util.js",
-    "pluginId": "cordova-plugin-local-notification",
-    "merges": [
-      "cordova.plugins.notification.local.core",
-      "plugin.notification.local.core"
     ]
   },
   {
@@ -334,6 +300,14 @@ module.exports = [
     "clobbers": [
       "plugin.google.maps"
     ]
+  },
+  {
+    "id": "cordova-plugin-device.device",
+    "file": "plugins/cordova-plugin-device/www/device.js",
+    "pluginId": "cordova-plugin-device",
+    "clobbers": [
+      "device"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -342,16 +316,15 @@ module.exports.metadata =
   "cordova-custom-config": "5.0.2",
   "cordova-plugin-badge": "0.8.7",
   "cordova-plugin-buildinfo": "2.0.1",
-  "cordova-plugin-device": "2.0.1",
   "cordova-plugin-dialogs": "2.0.1",
   "cordova-plugin-network-information": "2.0.1",
   "cordova-plugin-networkinterface": "2.0.0",
   "cordova-plugin-statusbar": "2.4.1",
   "cordova-sqlcipher-adapter": "0.1.12-rc2",
   "phonegap-plugin-push": "2.1.3",
-  "cordova-plugin-local-notification": "0.9.0-beta.2",
   "cordova-plugin-request-location-accuracy": "2.2.2",
-  "cordova-plugin-googlemaps": "2.3.0-beta-20180408-1032"
+  "cordova-plugin-googlemaps": "2.3.0-beta-20180408-1032",
+  "cordova-plugin-device": "2.0.2"
 };
 // BOTTOM OF METADATA
 });

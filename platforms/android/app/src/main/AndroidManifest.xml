@@ -22,12 +22,6 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        <provider android:authorities="${applicationId}.provider" android:exported="false" android:grantUriPermissions="true" android:name="de.appplant.cordova.plugin.notification.util.AssetProvider">
-            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/localnotification_provider_paths" />
-        </provider>
-        <receiver android:exported="false" android:name="de.appplant.cordova.plugin.localnotification.TriggerReceiver" />
-        <receiver android:exported="false" android:name="de.appplant.cordova.plugin.localnotification.ClearReceiver" />
-        <activity android:exported="false" android:launchMode="singleInstance" android:name="de.appplant.cordova.plugin.localnotification.ClickReceiver" android:theme="@android:style/Theme.Translucent" />
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDiylbqnHhwPJtFPhNoWRJlldWUI3BPZSc" />
         <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
     </application>

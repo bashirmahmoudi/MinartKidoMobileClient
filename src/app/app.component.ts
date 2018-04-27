@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MinartContext } from './core/minart-context';
 
 @Component({
   selector: 'minart-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  title = 'minart';
+
+  constructor(minartContext: MinartContext) {
+    const s = minartContext.SecurityContext.CurrentUser;
+    console.log('current user: ' + s);
+  }
 }

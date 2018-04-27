@@ -37,7 +37,6 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "@types/cordova": "0.0.34",
-    "@types/cordova-plugin-device": "^1.1.5",
     "@types/cordova-plugin-statusbar": "^2.2.2",
     "@types/cordova-sqlite-storage": "^1.5.3",
     "@types/jquery": "^3.3.1",
@@ -49,7 +48,7 @@
     "cordova-ios": "^4.5.4",
     "cordova-plugin-badge": "^0.8.7",
     "cordova-plugin-buildinfo": "^2.0.1",
-    "cordova-plugin-device": "^2.0.1",
+    "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-dialogs": "^2.0.1",
     "cordova-plugin-googlemaps": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps",
     "cordova-plugin-googlemaps-sdk": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git#2.6.0",
@@ -97,7 +96,6 @@
       "cordova-custom-config": {},
       "cordova-plugin-badge": {},
       "cordova-plugin-buildinfo": {},
-      "cordova-plugin-device": {},
       "cordova-plugin-dialogs": {},
       "cordova-plugin-network-information": {},
       "cordova-plugin-networkinterface": {},
@@ -106,7 +104,6 @@
       "phonegap-plugin-push": {
         "FCM_VERSION": "11.6.2"
       },
-      "cordova-plugin-local-notification": {},
       "cordova-plugin-request-location-accuracy": {},
       "cordova-plugin-googlemaps": {
         "API_KEY_FOR_ANDROID": "AIzaSyDiylbqnHhwPJtFPhNoWRJlldWUI3BPZSc",
@@ -115,7 +112,8 @@
         "ANDROID_SUPPORT_V4_VERSION": "24.1.0",
         "LOCATION_WHEN_IN_USE_DESCRIPTION": "Location is in use",
         "LOCATION_ALWAYS_USAGE_DESCRIPTION": "Location always in use"
-      }
+      },
+      "cordova-plugin-device": {}
     }
   }
 }

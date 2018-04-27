@@ -16,16 +16,10 @@
     "cordova-plugin-buildinfo": {
       "PACKAGE_NAME": "com.minart.kido"
     },
-    "cordova-plugin-device": {
-      "PACKAGE_NAME": "com.minart.kido"
-    },
     "cordova-plugin-dialogs": {
       "PACKAGE_NAME": "com.minart.kido"
     },
     "cordova-plugin-googlemaps": {
-      "PACKAGE_NAME": "com.minart.kido"
-    },
-    "cordova-plugin-local-notification": {
       "PACKAGE_NAME": "com.minart.kido"
     },
     "cordova-plugin-network-information": {
@@ -44,6 +38,9 @@
       "PACKAGE_NAME": "com.minart.kido"
     },
     "phonegap-plugin-push": {
+      "PACKAGE_NAME": "com.minart.kido"
+    },
+    "cordova-plugin-device": {
       "PACKAGE_NAME": "com.minart.kido"
     }
   },

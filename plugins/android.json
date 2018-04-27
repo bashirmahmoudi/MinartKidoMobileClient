@@ -16,9 +16,6 @@
     "cordova-plugin-buildinfo": {
       "PACKAGE_NAME": "com.minart.kido"
     },
-    "cordova-plugin-device": {
-      "PACKAGE_NAME": "com.minart.kido"
-    },
     "cordova-plugin-dialogs": {
       "PACKAGE_NAME": "com.minart.kido"
     },
@@ -38,9 +35,6 @@
       "FCM_VERSION": "11.6.2",
       "PACKAGE_NAME": "com.minart.kido"
     },
-    "cordova-plugin-local-notification": {
-      "PACKAGE_NAME": "com.minart.kido"
-    },
     "cordova-plugin-request-location-accuracy": {
       "PACKAGE_NAME": "com.minart.kido"
     },
@@ -48,6 +42,9 @@
       "API_KEY_FOR_ANDROID": "AIzaSyDiylbqnHhwPJtFPhNoWRJlldWUI3BPZSc",
       "PLAY_SERVICES_VERSION": "11.8.0",
       "ANDROID_SUPPORT_V4_VERSION": "24.1.0",
+      "PACKAGE_NAME": "com.minart.kido"
+    },
+    "cordova-plugin-device": {
       "PACKAGE_NAME": "com.minart.kido"
     }
   },

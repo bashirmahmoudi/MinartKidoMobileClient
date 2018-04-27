@@ -49,7 +49,7 @@ export class SettingManager {
         });
     }
 
-    public OnStartup(loaders?: Array<ISettingsLoader>): void {
+    public OnStartup(loaders: Array<ISettingsLoader>): void {
         const ldrs = loaders ? loaders : this._loader;
         this.LoadConstants()
             .then((settings) => {
