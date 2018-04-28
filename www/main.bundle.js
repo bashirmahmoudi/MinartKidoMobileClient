@@ -108,15 +108,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js"), __webpack_require__("./node_modules/@angular/core/esm5/core.js"), __webpack_require__("./src/app/app-routing.module.ts"), __webpack_require__("./src/app/app.component.ts"), __webpack_require__("./src/app/core/view/core-directives.module.ts"), __webpack_require__("./src/app/core/minart-core.module.ts"), __webpack_require__("./src/app/services/UserServices.ts"), __webpack_require__("./src/app/core/minart-context.ts")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, platform_browser_1, core_1, app_routing_module_1, app_component_1, core_directives_module_1, minart_core_module_1, UserServices_1, minart_context_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js"), __webpack_require__("./node_modules/@angular/core/esm5/core.js"), __webpack_require__("./src/app/app-routing.module.ts"), __webpack_require__("./src/app/app.component.ts"), __webpack_require__("./src/app/core/view/core-directives.module.ts"), __webpack_require__("./src/app/core/minart-core.module.ts"), __webpack_require__("./src/app/services/UserServices.ts"), __webpack_require__("./src/app/core/interface/iuser-service.ts"), __webpack_require__("./src/app/core/class/AppConfig.ts"), __webpack_require__("./node_modules/@angular/http/esm5/http.js"), __webpack_require__("./src/app/appclass/kido-configuration.ts")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, platform_browser_1, core_1, app_routing_module_1, app_component_1, core_directives_module_1, minart_core_module_1, UserServices_1, iuser_service_1, AppConfig_1, http_1, kido_configuration_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    function startupServicesFactory(minartContext, userService) {
-        return function () {
-            minartContext.OnStartup(userService);
-        };
-    }
-    exports.startupServicesFactory = startupServicesFactory;
+    var s = {
+        loginUrl: '/login'
+    };
+    var conf = {
+        loginServiceUrl: '/api/login'
+    };
     var AppModule = /** @class */ (function () {
         function AppModule() {
         }
@@ -127,21 +127,23 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
                 ],
                 imports: [
                     platform_browser_1.BrowserModule,
+                    http_1.HttpModule,
                     app_routing_module_1.AppRoutingModule,
                     core_directives_module_1.CoreDirectivesModule,
-                    minart_core_module_1.MinartCoreModule
+                    minart_core_module_1.MinartCoreModule.forRoot({
+                        provide: iuser_service_1.IuserService,
+                        useClass: UserServices_1.UserServices
+                    }, {
+                        provide: AppConfig_1.APP_CONFIG,
+                        useValue: s
+                    })
                 ],
                 providers: [
-                    UserServices_1.UserServices,
                     {
-                        provide: core_1.APP_INITIALIZER,
-                        useFactory: startupServicesFactory,
-                        deps: [
-                            minart_context_1.MinartContext,
-                            UserServices_1.UserServices
-                        ],
-                        multi: true
-                    }
+                        provide: kido_configuration_1.KIDO_CONFIG,
+                        useValue: conf
+                    },
+                    UserServices_1.UserServices
                 ],
                 bootstrap: [app_component_1.AppComponent]
             })
@@ -149,6 +151,44 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
         return AppModule;
     }());
     exports.AppModule = AppModule;
+}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ }),
+
+/***/ "./src/app/appclass/kido-configuration.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__("./node_modules/@angular/core/esm5/core.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, core_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var KidoConfiguration = /** @class */ (function () {
+        function KidoConfiguration() {
+        }
+        return KidoConfiguration;
+    }());
+    exports.KidoConfiguration = KidoConfiguration;
+    exports.KIDO_CONFIG = new core_1.InjectionToken('kido.config');
+}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ }),
+
+/***/ "./src/app/core/class/AppConfig.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__("./node_modules/@angular/core/esm5/core.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, core_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var AppConfig = /** @class */ (function () {
+        function AppConfig() {
+        }
+        return AppConfig;
+    }());
+    exports.AppConfig = AppConfig;
+    exports.APP_CONFIG = new core_1.InjectionToken('app.config');
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -398,6 +438,24 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
 
 /***/ }),
 
+/***/ "./src/app/core/interface/iuser-service.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var IuserService = /** @class */ (function () {
+        function IuserService() {
+        }
+        return IuserService;
+    }());
+    exports.IuserService = IuserService;
+}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ }),
+
 /***/ "./src/app/core/managers/security-context.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -436,22 +494,50 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__("./node_modules/@angular/http/esm5/http.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, http_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var SecurityContext = /** @class */ (function () {
-        function SecurityContext() {
-        }
-        SecurityContext.prototype.OnStart = function (userService) {
+        function SecurityContext(userService, _loginUrl) {
+            this._loginUrl = _loginUrl;
+            console.log(userService);
             this._userService = userService;
-            console.log('user service is ' + userService.GetUserName());
-        };
+        }
+        Object.defineProperty(SecurityContext.prototype, "AuthenticationRequestOptions", {
+            get: function () {
+                var headers = new http_1.Headers({
+                    'Authorization': 'Bearer ' + this._token
+                });
+                return new http_1.RequestOptions({
+                    headers: headers
+                });
+            },
+            enumerable: true,
+            configurable: true
+        });
         Object.defineProperty(SecurityContext.prototype, "CurrentUser", {
             /**
              * Current Login Identity
              */
             get: function () {
-                return null;
+                return this._currentUser;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(SecurityContext.prototype, "RedirectUrl", {
+            get: function () {
+                return this._redirectUrl;
+            },
+            set: function (v) {
+                this._redirectUrl = v;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(SecurityContext.prototype, "LoginUrl", {
+            get: function () {
+                return this._redirectUrl;
             },
             enumerable: true,
             configurable: true
@@ -509,15 +595,20 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__("./node_modules/@angular/core/esm5/core.js"), __webpack_require__("./src/app/core/class/utility.ts"), __webpack_require__("./src/app/core/class/setting-manager.ts"), __webpack_require__("./src/app/core/class/device-info.ts"), __webpack_require__("./src/app/core/managers/security-context.ts")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, core_1, utility_1, setting_manager_1, device_info_1, security_context_1) {
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__("./node_modules/@angular/core/esm5/core.js"), __webpack_require__("./src/app/core/class/utility.ts"), __webpack_require__("./src/app/core/class/setting-manager.ts"), __webpack_require__("./src/app/core/class/device-info.ts"), __webpack_require__("./src/app/core/managers/security-context.ts"), __webpack_require__("./src/app/core/interface/iuser-service.ts"), __webpack_require__("./src/app/core/class/AppConfig.ts")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, core_1, utility_1, setting_manager_1, device_info_1, security_context_1, iuser_service_1, AppConfig_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var MinartContext = /** @class */ (function () {
-        function MinartContext() {
+        function MinartContext(userService, config) {
+            console.log('userService: ' + userService);
+            console.log('config: ' + config);
             this._utility = new utility_1.Utility();
             this._settings = new setting_manager_1.SettingManager();
             this._deviceInfo = new device_info_1.DeviceInfo();
-            this._securityContext = new security_context_1.SecurityContext();
+            this._securityContext = new security_context_1.SecurityContext(userService, config.loginUrl);
         }
         Object.defineProperty(MinartContext.prototype, "Utility", {
             get: function () {
@@ -557,11 +648,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
         MinartContext.prototype.OnStartup = function (userServiceProvider) {
             // TODO: database settings loader
             this._settings.OnStartup(new Array());
-            this._securityContext.OnStart(userServiceProvider);
         };
         MinartContext = __decorate([
             core_1.Injectable(),
-            __metadata("design:paramtypes", [])
+            __param(1, core_1.Inject(AppConfig_1.APP_CONFIG)),
+            __metadata("design:paramtypes", [iuser_service_1.IuserService,
+                AppConfig_1.AppConfig])
         ], MinartContext);
         return MinartContext;
     }());
@@ -595,21 +687,45 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
     var MinartCoreModule = /** @class */ (function () {
         function MinartCoreModule() {
         }
-        MinartCoreModule = __decorate([
+        MinartCoreModule_1 = MinartCoreModule;
+        MinartCoreModule.forRoot = function (userService, config) {
+            return {
+                ngModule: MinartCoreModule_1,
+                providers: [userService, config, minart_context_1.MinartContext]
+            };
+        };
+        MinartCoreModule = MinartCoreModule_1 = __decorate([
             core_1.NgModule({
                 imports: [
                     common_1.CommonModule
                 ],
-                providers: [
-                    minart_context_1.MinartContext
-                ],
+                providers: [],
                 exports: [],
                 declarations: []
             })
         ], MinartCoreModule);
         return MinartCoreModule;
+        var MinartCoreModule_1;
     }());
     exports.MinartCoreModule = MinartCoreModule;
+}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ }),
+
+/***/ "./src/app/core/model/user-dto.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var UserDto = /** @class */ (function () {
+        function UserDto() {
+        }
+        return UserDto;
+    }());
+    exports.UserDto = UserDto;
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -751,17 +867,39 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__("./node_modules/@angular/core/esm5/core.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, core_1) {
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__("./node_modules/@angular/core/esm5/core.js"), __webpack_require__("./node_modules/rxjs/_esm5/Observable.js"), __webpack_require__("./node_modules/@angular/http/esm5/http.js"), __webpack_require__("./src/app/core/model/user-dto.ts"), __webpack_require__("./src/app/appclass/kido-configuration.ts"), __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js"), __webpack_require__("./node_modules/rxjs/_esm5/add/operator/catch.js"), __webpack_require__("./node_modules/rxjs/_esm5/add/observable/throw.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, core_1, Observable_1, http_1, user_dto_1, kido_configuration_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var UserServices = /** @class */ (function () {
-        function UserServices() {
+        function UserServices(http, config) {
+            this.http = http;
+            this._loginServiceUrl = config.loginServiceUrl;
         }
-        UserServices.prototype.GetUserName = function () {
-            return 'Bashir';
+        UserServices.prototype.Login = function (user) {
+            var body = JSON.stringify(user_dto_1.UserDto);
+            return this.http.post(this._loginServiceUrl, body)
+                .map(function (response, index) {
+                // login successful if there's a jwt token in the response
+                var token = response.json() && response.json().token;
+                if (token) {
+                    return token;
+                }
+                return Observable_1.Observable.throw(response.status);
+            });
+        };
+        UserServices.prototype.Logoff = function () {
+            return Observable_1.Observable.create();
         };
         UserServices = __decorate([
-            core_1.Injectable()
+            core_1.Injectable(),
+            __param(1, core_1.Inject(kido_configuration_1.KIDO_CONFIG)),
+            __metadata("design:paramtypes", [http_1.Http, kido_configuration_1.KidoConfiguration])
         ], UserServices);
         return UserServices;
     }());

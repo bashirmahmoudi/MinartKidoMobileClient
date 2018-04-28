@@ -16,11 +16,14 @@ export class MinartContext {
     private _dialoge: DialogeManager;
     private _securityContext: SecurityContext;
 
-    constructor(userService: IuserService, @Inject(APP_CONFIG) config: AppConfig) {
+    constructor(userService: IuserService,
+                @Inject(APP_CONFIG) config: AppConfig) {
+        console.log('userService: ' + userService);
+        console.log('config: ' + config);
         this._utility = new Utility();
         this._settings = new SettingManager();
         this._deviceInfo = new DeviceInfo();
-        this._securityContext = new SecurityContext(userService);
+        this._securityContext = new SecurityContext(userService, config.loginUrl);
     }
 
     public get Utility(): Utility {

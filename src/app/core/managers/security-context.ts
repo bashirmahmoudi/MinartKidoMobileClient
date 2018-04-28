@@ -12,7 +12,7 @@ export class SecurityContext {
 
     private _redirectUrl: string;
 
-    constructor(userService: IuserService , @Inject('LoginUrl') private _loginUrl: string) {
+    constructor(userService: IuserService , private _loginUrl: string) {
         console.log(userService);
         this._userService = userService;
     }
