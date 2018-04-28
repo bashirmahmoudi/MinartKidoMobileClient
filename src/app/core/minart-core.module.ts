@@ -1,4 +1,4 @@
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MinartContext } from './minart-context';
 import { IuserService } from './interface/iuser-service';
@@ -9,11 +9,15 @@ import { UserServices } from '../services/UserServices';
   imports: [
     CommonModule
   ],
-  providers: [
-    MinartContext
-  ],
-  exports: [
-  ],
+  providers: [],
+  exports: [],
   declarations: []
 })
-export class MinartCoreModule { }
+export class MinartCoreModule {
+  static forRoot(userService: new () => IuserService, config?:any): ModuleWithProviders {
+    return {
+      ngModule: MinartCoreModule,
+      providers: [userService, MinartContext, {provide: 'config', useValue: config}]
+    };
+  }
+}

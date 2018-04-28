@@ -7,7 +7,8 @@ export class SecurityContext {
     private _userService: IuserService;
     private _currentUser: User;
 
-    public OnStart(userService: IuserService) {
+    constructor(userService: IuserService) {
+        console.log(userService);
         this._userService = userService;
     }
 

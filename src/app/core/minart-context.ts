@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Utility } from './class/utility';
 import { SettingManager } from './class/setting-manager';
 import { DeviceInfo } from './class/device-info';
@@ -6,6 +6,7 @@ import { DialogeManager } from './class/dialoge-manager';
 import { SecurityContext } from './managers/security-context';
 import { IuserService } from './interface/iuser-service';
 import { ISettingsLoader } from './interface/isettings-loader';
+import { AppConfig, APP_CONFIG } from './class/AppConfig';
 
 @Injectable()
 export class MinartContext {
@@ -15,11 +16,11 @@ export class MinartContext {
     private _dialoge: DialogeManager;
     private _securityContext: SecurityContext;
 
-    constructor() {
+    constructor(userService: IuserService, @Inject(APP_CONFIG) config: AppConfig) {
         this._utility = new Utility();
         this._settings = new SettingManager();
         this._deviceInfo = new DeviceInfo();
-        this._securityContext = new SecurityContext();
+        this._securityContext = new SecurityContext(userService);
     }
 
     public get Utility(): Utility {
@@ -45,7 +46,6 @@ export class MinartContext {
     public OnStartup(userServiceProvider?: IuserService): void {
         // TODO: database settings loader
         this._settings.OnStartup(new Array<ISettingsLoader>());
-        this._securityContext.OnStart(userServiceProvider);
     }
 }
 

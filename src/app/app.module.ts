@@ -10,13 +10,6 @@ import { UserServices } from './services/UserServices';
 import { IuserService } from './core/interface/iuser-service';
 import { MinartContext } from './core/minart-context';
 
-export function startupServicesFactory(minartContext: MinartContext,
-  userService: IuserService): Function {
-  return () => {
-    minartContext.OnStartup(userService);
-  };
-}
-
 @NgModule({
   declarations: [
     AppComponent
@@ -25,19 +18,10 @@ export function startupServicesFactory(minartContext: MinartContext,
     BrowserModule,
     AppRoutingModule,
     CoreDirectivesModule,
-    MinartCoreModule
+    MinartCoreModule.forRoot(UserServices)
   ],
   providers: [
-    UserServices,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: startupServicesFactory,
-      deps: [
-        MinartContext,
-        UserServices
-      ],
-      multi: true
-    }
+    UserServices
   ],
   bootstrap: [AppComponent]
 })
