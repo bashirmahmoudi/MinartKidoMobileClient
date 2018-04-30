@@ -1,10 +1,18 @@
+import { UserDto } from './../model/user-dto';
 import { User } from '../model/user';
 import { Permission } from '../model/permission';
 import { Role } from '../model/role';
 import { IuserService } from '../interface/iuser-service';
 import { RequestOptions, Headers } from '@angular/http';
 import { Inject } from '@angular/core';
-
+import { Resolve } from '@angular/router';
+import 'rxjs/add/operator/toPromise';
+/**
+ *
+ *
+ * @export
+ * @class SecurityContext
+ */
 export class SecurityContext {
     private _userService: IuserService;
     private _currentUser: User;
@@ -12,19 +20,19 @@ export class SecurityContext {
 
     private _redirectUrl: string;
 
-    constructor(userService: IuserService , private _loginUrl: string) {
+    constructor(userService: IuserService, private _loginUrl: string) {
         console.log(userService);
         this._userService = userService;
     }
 
 
     public get AuthenticationRequestOptions(): RequestOptions {
-      const headers = new Headers({
-        'Authorization': 'Bearer ' + this._token
-      });
-      return new RequestOptions({
-        headers: headers
-      });
+        const headers = new Headers({
+            'Authorization': 'Bearer ' + this._token
+        });
+        return new RequestOptions({
+            headers: headers
+        });
     }
 
     /**
@@ -35,16 +43,16 @@ export class SecurityContext {
     }
 
     public get RedirectUrl(): string {
-      return this._redirectUrl;
+        return this._redirectUrl;
     }
 
     public set RedirectUrl(v: string) {
-      this._redirectUrl = v;
+        this._redirectUrl = v;
     }
 
 
     public get LoginUrl(): string {
-      return this._redirectUrl;
+        return this._redirectUrl;
     }
 
 
@@ -52,11 +60,11 @@ export class SecurityContext {
         return null;
     }
 
-    public HasPermission(permission: Permission|  string , user?: User|Role): boolean {
+    public HasPermission(permission: Permission | string, user?: User | Role): boolean {
         return false;
     }
 
-    public HasPermissions(permissions: Array<Permission> | Array<string>, user?: User|Role): {[key: string]: string; } {
+    public HasPermissions(permissions: Array<Permission> | Array<string>, user?: User | Role): { [key: string]: string; } {
         return null;
     }
 
@@ -64,19 +72,40 @@ export class SecurityContext {
         return null;
     }
 
-    public HasRole(role: Role | string, user?: User|Role): boolean {
+    public HasRole(role: Role | string, user?: User | Role): boolean {
         return false;
     }
 
-    public HasRoles(role: Array<Role> | Array<string>, user?: User|Role): {[key: string]: string; } {
+    public HasRoles(role: Array<Role> | Array<string>, user?: User | Role): { [key: string]: string; } {
         return null;
     }
 
     public async Login(username: User | string, password?: string, extras?: Array<string>): Promise<boolean> {
-        return null;
+        const userDto = new UserDto();
+        if (username instanceof User) {
+            userDto.userName = username.Name;
+            userDto.password = username.Password;
+        } else {
+            userDto.userName = username;
+            userDto.password = password;
+        }
+        return new Promise<boolean>((resolve, reject) => {
+            this._userService.Login(userDto).subscribe((value) => {
+                this._currentUser = value;
+                resolve(true);
+            }, (error: any) => {
+                reject(error);
+            });
+        });
     }
 
     public async Logoff(): Promise<boolean> {
-        return null;
+        return await this._userService.Logoff(this.AuthenticationRequestOptions).map(value => {
+            if (value) {
+                this._currentUser = null;
+                this._token = null;
+            }
+            return value;
+        }).toPromise();
     }
 }
