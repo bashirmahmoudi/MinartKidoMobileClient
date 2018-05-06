@@ -1,0 +1,57 @@
+<div class="container"
+     id="loginContainer">
+  <div class="card card-container">
+    <img id="profile-img"
+         class="profile-img-card"
+         [src]="profileImage" />
+    <form [ngClass]="{ 'form-signin' : true, 'was-validated': (!isUsernameValid && !isPasswordValid) }"
+          class="form-signin">
+      <div class="form-group row">
+        <label for="inputUserName"
+               class="sr-only"
+               *ngIf="showUsernameLable">{{usernameLable}}</label>
+        <input type="text"
+               id="inputUserName"
+               [value]="username"
+               (input)="username = $event.target.value"
+               [placeholder]="usernameLable"
+               [ngClass]="{'is-invalid' : isUsernameValid, 'form-control': true}"
+               [disabled]="isUsernameDisabled" />
+      </div>
+      <div class="form-group row">
+        <label for="inputPassword"
+               class="sr-only"
+               *ngIf="showPasswordLable">{{passwordLable}}</label>
+        <input type="password"
+               id="inputPassword"
+               [value]="password"
+               (input)="password = $event.target.value"
+               [placeholder]="passwordLable"
+               [ngClass]="{ 'is-invalid' : isPasswordValid, 'form-control': true}"
+               [disabled]="isPasswordDisabled" />
+      </div>
+      <div class="form-group row">
+        <div class="form-check">
+          <input type="checkbox"
+                 class="form-check-input"
+                 id="rememberMe"
+                 [disabled]="isRememeberMeDisabled"
+                 [value]="rememberMe"
+                 (input)="rememberMe = $event.target.value"
+                 [checked]="rememberMe"
+                 (change)="rememberMe = !rememberMe" />
+          <label class="form-check-label"
+                 for="rememberMe">{{rememberMeLable}}</label>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="invalid-feedback">
+          {{message}}
+        </div>
+      </div>
+      <div class="form-group row">
+
+      </div>
+    </form>
+  </div>
+</div>

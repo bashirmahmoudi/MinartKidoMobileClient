@@ -18,7 +18,7 @@ const s: AppConfig = {
 };
 
 const conf: KidoConfiguration = {
-  loginServiceUrl: '/api/login'
+  loginServiceUrl: 'http://services.minartco.com/minartkido/api/auth/CreateToken'
 };
 
 @NgModule({

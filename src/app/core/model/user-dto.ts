@@ -1,4 +1,4 @@
 export class UserDto {
-    public userName: string;
+    public username: string;
     public password: string;
 }

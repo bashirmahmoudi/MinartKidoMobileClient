@@ -83,10 +83,10 @@ export class SecurityContext {
     public async Login(username: User | string, password?: string, extras?: Array<string>): Promise<boolean> {
         const userDto = new UserDto();
         if (username instanceof User) {
-            userDto.userName = username.Name;
+            userDto.username = username.Name;
             userDto.password = username.Password;
         } else {
-            userDto.userName = username;
+            userDto.username = username;
             userDto.password = password;
         }
         return new Promise<boolean>((resolve, reject) => {

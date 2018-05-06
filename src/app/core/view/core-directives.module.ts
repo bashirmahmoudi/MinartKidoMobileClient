@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PerfectScrollbarConfigInterface,
-         PerfectScrollbarComponent,
-         PerfectScrollbarModule,
-         PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import {
+  PerfectScrollbarConfigInterface,
+  PerfectScrollbarComponent,
+  PerfectScrollbarModule,
+  PERFECT_SCROLLBAR_CONFIG
+} from 'ngx-perfect-scrollbar';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { LoginComponent } from './login/login.component';
 
 const DEFUALT_PERFERCT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   swipeEasing: true,
@@ -16,7 +19,7 @@ const DEFUALT_PERFERCT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     CommonModule,
     PerfectScrollbarModule
   ],
-  declarations: [SidebarComponent],
+  declarations: [SidebarComponent, LoginComponent],
   exports: [SidebarComponent],
   providers: [
     {
