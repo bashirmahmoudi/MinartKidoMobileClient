@@ -1,2 +1,2 @@
-token = 0f10c52ba4ee3175e6fad5cbbed6ba0669d32738
+token = b754a1b93b4d586e2685b992448d1e462fc3e42b
 gist = 1ea72eb3781fbc900fbe810f5b70c01a
